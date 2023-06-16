@@ -1,16 +1,83 @@
-# yourself_in_time_project
+# **Takım İsmi**
 
-A new Flutter project.
+Takım Flutter 3
 
-## Getting Started
+# Ürün İle İlgili Bilgiler
 
-This project is a starting point for a Flutter application.
+## Takım Elemanları
+- Ulaş Dağdeviren: Scrum Master
+- Cihat Yümsel: Product Owner
+- Hava Gündoğan: Developer
+- Beyza Ekmekçi: Developer
+## Ürün İsmi
 
-A few resources to get you started if this is your first Flutter project:
+--Time Catch--
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Product Backlog URL
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[Flutter Team 3 Trello Board](https://trello.com/invite/b/NU5eF4cA/ATTI2bccf2f07dab9b43b7a9898c48324eff222D5497/f-3-master-project)
+
+## Ürün Açıklaması
+
+Scrap App, daire sakinleri tarafından biriktirilmiş apartman ve sitelere ait kıymetli geri dönüşüm atıklarının, geri dönüştürülebilir atık toplayan firmalar tarafından toplanmasını kolaylaştırır ve apartman yönetimlerinin bir gelir kalemi olarak geri dönüşüm ödemesi almalarını sağlar. Ayrıca hurda ilanı verilebilen bu uygulamada kullanıcılar biriktirdikleri, bakır, demir, çelik, alüminyum, kağıt, cam vb hurdaların satışını ilanlar ile yapabilir. Scrap App, geri dönüştürülebilir atıkların kıymetinine önem verir, apartman ve site gibi, insanların blok halde yaşadığı mekanlarda, onların geri dönüşüm atıklarını topluca biriktirmelerini teşvik eder ve kolaylaştırır. Scrap App kağıt, metal, plastik cam vb ürünlerin geri dönüştürülmesi halinde, insanların kendisi, çevresi ve ülkesi için maddi gelir ve Dünya doğası için sürekli fayda sağlayabileceğini savunur ve geri dönüşüm sayesinde yeniden üretim ve madencilik faaliyetlerinin azaltılabileceğini ve böylece yeniden üretim kaynaklı doğaya olan zararın azaltılması gerektiği fikrini destekler ve yeniden kazanımı hedefler.
+
+
+- **Uygulama birincil fonksiyonu**: Apartman/site sakinlerinin geri dönüşebilir kıymetli atıkları apartman hizmetlisi tarafından düzenli olarak toplanarak, akıllı geri dönüşüm kutusunda biriktirilir, toplayıcı firma biriken atıklara ilişkin kutu doluluk oranını uygulama üzerinden görür ve satın alma teklifini apartman yönetimine uygulama ile bildirir, apartman yönetiminin teklif onayından sonra, atık satın alma işlemi gerçekleşir.
+
+- **Uygulama ikincil fonksiyonu**: Kullanıcı elindeki geri dönüşebilir kıymetli maddeler için teklif almak üzere Scrap App'e girer ve ilan verir, toplayıcı firma, kullanıcının ilanına ilişkin ağırlık ve madde türü gibi bilgileri kullanıcının ilanında görür ve satın alma teklifini kullanıcıya bildirir, kullanıcının teklif onayından sonra, hurda satın alma işlemi gerçekleşir.
+
+## Ürün Özellikleri
+
+- Doluluk oranı %75'in üzerinde olan apartman akıllı atık kutularının kutu doluluk oranının geri dönüşüm atık toplayıcılarına bildirilmesi.
+- Doluluk oranı %75'in üzerinde olan apartman akıllı atık kutularındaki geri dönüşüm maddelerinin satın alınmasına ilişkin, toplayıcı firmalar tarafından satın alma teklifini apartman yönetimlerine sunabilmesi ve yönetici tarafından teklifin kabul edilmesi.
+- Apartmandan bağımsız olarak biriktirilmiş bireysel geri dönüşüm maddelerinin satın alımı için toplayıcı firmalardan teklif alma ve toplayıcı çağırma hizmeti.
+- Kullanıcı, apartman yönetimi, atık toplayıcı firma ve uygulama şirketi için geliştirilmiş kullanıcı rolleri, özellikleri ve ekranları.
+
+## Hedef Kitle
+
+- Öğrenciler
+- Şirket Çalışanları
+- Sınava Hazırlananlar
+
+
+## Juriye Not
+
+??? İlan formu veritabanına başarılı şekilde veri göndermesine rağmen, tecrübe yetersizliği ve zaman eksikliği sebebiyle ilanlar listesi ve teklif formları veritabanıyla ilişkilendirilememiştir.
+
+
+---
+
+# Sprint 1
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
+
+
+- **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
+
+
+- **Daily Scrum**: Daily Scrum toplantılarının Whatsapp ve Zoom üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linkitarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum)
+
+- **Sprint board update**: Sprint board screenshotları: 
+![Backlog 1](https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board) 
+
+
+- **Ürün Durumu**: Ekran görüntüleri ve videoları linkteki Project management reposundaki product status klasöründe verilmiştir:
+  ![Product status](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status)
+ 
+- **Sprint Review**: 
+Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. Sprint Review katılımcıları: Mustafa Aksoy ?
+
+- **Sprint Retrospective:**
+  - Roller ile ilgili düzenleme yapılmış, scrum master ve product owner belirlenmiştir.
+  - Takım içindeki görev dağılımları belirlenmiş, trello da iş bölümü yapılmıştır.
+  - Takım üyelerinin gelecek sprintlerde neler yaptığı gerektiğine değinilmiştir.
+ 
+
+
+---
+
+## Product Backlog URL
+
+[Flutter Team 3 Trello Board](https://trello.com/b/NU5eF4cA/f-3-master-project)
+
+---
