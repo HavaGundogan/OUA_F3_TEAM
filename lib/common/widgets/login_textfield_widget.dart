@@ -1,8 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
-import 'package:yourself_in_time_project/common/constants/controller_constants.dart';
 
 class LoginTextfieldWidget extends StatelessWidget {
   final String text;

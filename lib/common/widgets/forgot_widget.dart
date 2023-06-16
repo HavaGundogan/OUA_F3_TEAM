@@ -10,7 +10,7 @@ Positioned buildForgotWidget(FargotPasswordViewModel model) {
     bottom: 40,
     left: 0,
     right: 0,
-    top: 360,
+    top: 300,
     child: Container(
       width: double.infinity,
       height: 200,

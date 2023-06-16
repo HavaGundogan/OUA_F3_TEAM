@@ -15,9 +15,6 @@ class FargotPasswordViewModel extends AppBaseViewModel {
   void validateEmail() {
     if (_email.isEmpty) {
       _emailError = 'Lütfen Email giriniz!!!';
-    } else if (!_email.endsWith('@gmail.com') ||
-        !_email.endsWith('@outlook.com')) {
-      _emailError = 'Lütfen geçerli bir Email giriniz!!!';
     } else {
       _emailError = '';
     }
