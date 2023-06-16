@@ -31,7 +31,7 @@ class _RegisterViewState extends State<RegisterView> {
                 size,
                 AssetsPathConstants.welcomeJsonPath,
                 -20,
-                20,
+                0,
               ),
               BackgroundWidget(),
               getLightBlueCircle(context),
@@ -41,7 +41,7 @@ class _RegisterViewState extends State<RegisterView> {
 
   Positioned buildRegister(RegisterViewModel model) {
     return Positioned(
-      top: 70,
+      top: 30,
       left: 0,
       right: 0,
       child: RegisterFieldWidget(

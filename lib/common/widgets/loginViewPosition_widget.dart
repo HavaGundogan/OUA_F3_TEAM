@@ -8,14 +8,26 @@ import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 
 Positioned buildWidget(BuildContext context, LoginViewModel model) {
   return Positioned(
-    bottom: 40,
+    bottom: 0,
     left: 0,
     right: 0,
-    top: 320,
+    top: 0,
     child: ListView(
       physics: NeverScrollableScrollPhysics(),
-      reverse: true,
       children: <Widget>[
+        Column(
+          children: [
+            EmailAndPasswordWidget(
+              model: model,
+            ),
+            ButtonNavigateContinue(
+              model: model,
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 40,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -37,12 +49,6 @@ Positioned buildWidget(BuildContext context, LoginViewModel model) {
               ),
             ),
           ],
-        ),
-        ButtonNavigateContinue(
-          model: model,
-        ),
-        EmailAndPasswordWidget(
-          model: model,
         ),
       ],
     ),

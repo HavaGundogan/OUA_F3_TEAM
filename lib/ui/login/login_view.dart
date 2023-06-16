@@ -30,7 +30,7 @@ class _LoginViewState extends State<LoginView> {
                   size,
                   AssetsPathConstants.workingJsonPath,
                   20,
-                  20,
+                  0,
                 ),
                 BackgroundWidget(),
                 getLightBlueCircle(context),
