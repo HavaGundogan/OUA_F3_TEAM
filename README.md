@@ -57,11 +57,11 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
 - **Daily Scrum**: Daily Scrum toplantılarının Whatsapp ve Zoom üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linkitarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum)
 
 - **Sprint board update**: Sprint board screenshotları: 
-![Backlog 1](https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board) 
+[Sprint Board 1](https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board) 
 
 
 - **Ürün Durumu**: Ekran görüntüleri ve videoları linkteki Project management reposundaki product status klasöründe verilmiştir:
-  ![Product status](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status)
+  [Product status 1](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status)
  
 - **Sprint Review**: 
 Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. Sprint Review katılımcıları: Mustafa Aksoy ?
@@ -77,6 +77,6 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlan
 
 ## Product Backlog URL
 
-[Flutter Team 3 Trello Board](https://trello.com/b/NU5eF4cA/f-3-master-project)
+[Flutter Team 3 Trello Board 1](https://trello.com/b/NU5eF4cA/f-3-master-project)
 
 ---
