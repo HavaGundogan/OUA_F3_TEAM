@@ -54,7 +54,7 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
 - **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ilk sprint'in en azından 100 ile başlaması gerektiğine karar verildi.
 
 
-- **Daily Scrum**: Daily Scrum toplantılarının Whatsapp ve Zoom üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linkitarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum)
+- **Daily Scrum**: Daily Scrum toplantılarının Whatsapp ve Zoom üzerinden yapılmasına karar verilmiştir. Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linki tarafımızdan paylaşılmaktadır: [Sprint 1 Daily Scrum Chats](https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum)
 
 - **Sprint board update**: Sprint board screenshotları: 
 [Sprint Board 1](https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board) 
@@ -64,7 +64,7 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
   [Product status 1](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status)
  
 - **Sprint Review**: 
-Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. Sprint Review katılımcıları: Mustafa Aksoy ?
+Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. 
 
 - **Sprint Retrospective:**
   - Roller ile ilgili düzenleme yapılmış, scrum master ve product owner belirlenmiştir.
