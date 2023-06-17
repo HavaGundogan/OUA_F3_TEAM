@@ -19,31 +19,30 @@ Takım Flutter 3
 
 ## Ürün Açıklaması
 
-Scrap App, daire sakinleri tarafından biriktirilmiş apartman ve sitelere ait kıymetli geri dönüşüm atıklarının, geri dönüştürülebilir atık toplayan firmalar tarafından toplanmasını kolaylaştırır ve apartman yönetimlerinin bir gelir kalemi olarak geri dönüşüm ödemesi almalarını sağlar. Ayrıca hurda ilanı verilebilen bu uygulamada kullanıcılar biriktirdikleri, bakır, demir, çelik, alüminyum, kağıt, cam vb hurdaların satışını ilanlar ile yapabilir. Scrap App, geri dönüştürülebilir atıkların kıymetinine önem verir, apartman ve site gibi, insanların blok halde yaşadığı mekanlarda, onların geri dönüşüm atıklarını topluca biriktirmelerini teşvik eder ve kolaylaştırır. Scrap App kağıt, metal, plastik cam vb ürünlerin geri dönüştürülmesi halinde, insanların kendisi, çevresi ve ülkesi için maddi gelir ve Dünya doğası için sürekli fayda sağlayabileceğini savunur ve geri dönüşüm sayesinde yeniden üretim ve madencilik faaliyetlerinin azaltılabileceğini ve böylece yeniden üretim kaynaklı doğaya olan zararın azaltılması gerektiği fikrini destekler ve yeniden kazanımı hedefler.
+Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelleştirilebilir ve kullanıcı dostu bir program takip sistemi sunan inovatif bir uygulamadır. Time Catch, kullanıcıların planlı bir çalışma düzeni oluşturmasına ve hedeflerine ulaşmalarına yardımcı olarak, toplumda verimliliği ve kişisel gelişimi artırmayı hedefler. Bu yenilikçi çözüm, kullanıcıların programlarını oluşturmasını, tamamladıkları bölümleri işaretlemesini, saat ayarlamalarını yapmasını ve motivasyonu artıran seri amblemiyle ilerlemelerini takip etmelerini sağlar. Time Catch aynı zamanda kullanıcıların ders programlarını paylaştıkları bir platform sunarak, toplumsal etkileşimi ve destekleyici bir topluluk oluşturmayı hedefler.
 
+- **Uygulama birincil fonksiyonu**: Time Catch'in birincil fonksiyonu, kullanıcıların çalışma düzenini planlamalarına yardımcı olarak verimliliklerini artırmaktır. Kullanıcılar, kişiselleştirilebilir ders programları oluşturabilir ve bu programlara bağlı kalarak hedeflerine ulaşabilirler. Uygulama, kullanıcılara tamamlanan bölümleri işaretlemeleri ve saat ayarlamaları yapmaları için kullanıcı dostu bir arayüz sunar. Ayrıca, motivasyonu artırmak amacıyla seri amblemiyle kullanıcıların ilerlemelerini görselleştirir.
 
-- **Uygulama birincil fonksiyonu**: Apartman/site sakinlerinin geri dönüşebilir kıymetli atıkları apartman hizmetlisi tarafından düzenli olarak toplanarak, akıllı geri dönüşüm kutusunda biriktirilir, toplayıcı firma biriken atıklara ilişkin kutu doluluk oranını uygulama üzerinden görür ve satın alma teklifini apartman yönetimine uygulama ile bildirir, apartman yönetiminin teklif onayından sonra, atık satın alma işlemi gerçekleşir.
-
-- **Uygulama ikincil fonksiyonu**: Kullanıcı elindeki geri dönüşebilir kıymetli maddeler için teklif almak üzere Scrap App'e girer ve ilan verir, toplayıcı firma, kullanıcının ilanına ilişkin ağırlık ve madde türü gibi bilgileri kullanıcının ilanında görür ve satın alma teklifini kullanıcıya bildirir, kullanıcının teklif onayından sonra, hurda satın alma işlemi gerçekleşir.
-
+- **Uygulama ikincil fonksiyonu**: Time Catch'in ikincil fonksiyonu, kullanıcıların programlarını paylaşabilecekleri ve destekleyici bir topluluk oluşturabilecekleri bir platform sunmaktır. Kullanıcılar, kendi programlarını paylaşarak diğer kullanıcılarla etkileşimde bulunabilir ve geri bildirim alabilirler. Bu özellik, kullanıcıların birbirlerine motivasyon sağlamalarını ve deneyimlerini paylaşarak birlikte büyümelerini teşvik eder.
+  
 ## Ürün Özellikleri
 
-- Doluluk oranı %75'in üzerinde olan apartman akıllı atık kutularının kutu doluluk oranının geri dönüşüm atık toplayıcılarına bildirilmesi.
-- Doluluk oranı %75'in üzerinde olan apartman akıllı atık kutularındaki geri dönüşüm maddelerinin satın alınmasına ilişkin, toplayıcı firmalar tarafından satın alma teklifini apartman yönetimlerine sunabilmesi ve yönetici tarafından teklifin kabul edilmesi.
-- Apartmandan bağımsız olarak biriktirilmiş bireysel geri dönüşüm maddelerinin satın alımı için toplayıcı firmalardan teklif alma ve toplayıcı çağırma hizmeti.
-- Kullanıcı, apartman yönetimi, atık toplayıcı firma ve uygulama şirketi için geliştirilmiş kullanıcı rolleri, özellikleri ve ekranları.
+-Kullanıcı Girişi: Kullanıcı adı ve şifreyle yapılan giriş veya misafir girişi seçenekleri. 
+-Program Oluşturma: Kullanıcıların kişiselleştirilebilir ders programları oluşturması ve hedef belirlemesi. 
+-Alt Başlıklar: Ders programları içinde konulara ayrılan alt başlıkların eklenmesi. 
+-Tamamlanan Bölümlerin İşaretlenmesi: Kullanıcıların tamamladıkları bölümleri işaretleyebilmesi ve ilerlemelerini görsel olarak takip edebilmesi. 
+-Saat Ayarlaması: Kullanıcıların belirli bir saatte hangi konuya başlayacaklarını ayarlayabilmesi ve hatırlatıcı mesajlar alabilmesi. 
+-Motivasyon ve İlerleme Göstergeleri: Seri amblemiyle kullanıcıların kendilerini kaç gün boyunca planlı kalmaya sadık olduklarını görebilmesi. Ayrıca, gün içinde tamamlanan programın yüzdesini gösteren yuvarlak şeklinde bir ilerleme çubuğu. 
+-Paylaşım Bölümü: Kullanıcıların kendi programlarını diğer kullanıcılarla paylaşabilmeleri ve geri bildirim alabilmeleri için bir platform.
 
 ## Hedef Kitle
 
 - Öğrenciler
 - Şirket Çalışanları
 - Sınava Hazırlananlar
-
-
-## Juriye Not
-
-??? İlan formu veritabanına başarılı şekilde veri göndermesine rağmen, tecrübe yetersizliği ve zaman eksikliği sebebiyle ilanlar listesi ve teklif formları veritabanıyla ilişkilendirilememiştir.
-
+- Kendi programlarını yönetmek isteyenler
+- Motivasyonunu artırmak ve destekleyici bir toplulukla etkileşimde bulunmak isteyenler
+- Planlı çalışma düzeni oluşturmakta zorlanan ve motivasyon eksikliği yaşayanlar
 
 ---
 
