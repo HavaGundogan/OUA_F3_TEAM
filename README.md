@@ -27,13 +27,13 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
   
 ## Ürün Özellikleri
 
--Kullanıcı Girişi: Kullanıcı adı ve şifreyle yapılan giriş veya misafir girişi seçenekleri. 
--Program Oluşturma: Kullanıcıların kişiselleştirilebilir ders programları oluşturması ve hedef belirlemesi. 
--Alt Başlıklar: Ders programları içinde konulara ayrılan alt başlıkların eklenmesi. 
--Tamamlanan Bölümlerin İşaretlenmesi: Kullanıcıların tamamladıkları bölümleri işaretleyebilmesi ve ilerlemelerini görsel olarak takip edebilmesi. 
--Saat Ayarlaması: Kullanıcıların belirli bir saatte hangi konuya başlayacaklarını ayarlayabilmesi ve hatırlatıcı mesajlar alabilmesi. 
--Motivasyon ve İlerleme Göstergeleri: Seri amblemiyle kullanıcıların kendilerini kaç gün boyunca planlı kalmaya sadık olduklarını görebilmesi. Ayrıca, gün içinde tamamlanan programın yüzdesini gösteren yuvarlak şeklinde bir ilerleme çubuğu. 
--Paylaşım Bölümü: Kullanıcıların kendi programlarını diğer kullanıcılarla paylaşabilmeleri ve geri bildirim alabilmeleri için bir platform.
+- **Kullanıcı Girişi**: Kullanıcı adı ve şifreyle yapılan giriş veya misafir girişi seçenekleri. 
+- **Program Oluşturma**: Kullanıcıların kişiselleştirilebilir ders programları oluşturması ve hedef belirlemesi. 
+- **Alt Başlıklar**: Ders programları içinde konulara ayrılan alt başlıkların eklenmesi. 
+- **Tamamlanan Bölümlerin İşaretlenmesi**: Kullanıcıların tamamladıkları bölümleri işaretleyebilmesi ve ilerlemelerini görsel olarak takip edebilmesi. 
+- **Saat Ayarlaması**: Kullanıcıların belirli bir saatte hangi konuya başlayacaklarını ayarlayabilmesi ve hatırlatıcı mesajlar alabilmesi. 
+- **Motivasyon ve İlerleme Göstergeleri**: Seri amblemiyle kullanıcıların kendilerini kaç gün boyunca planlı kalmaya sadık olduklarını görebilmesi. Ayrıca, gün içinde tamamlanan programın yüzdesini gösteren yuvarlak şeklinde bir ilerleme çubuğu. 
+- **Paylaşım Bölümü**: Kullanıcıların kendi programlarını diğer kullanıcılarla paylaşabilmeleri ve geri bildirim alabilmeleri için bir platform.
 
 ## Hedef Kitle
 
