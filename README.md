@@ -69,7 +69,7 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlan
 - **Sprint Retrospective:**
   - Roller ile ilgili düzenleme yapılmış, scrum master ve product owner belirlenmiştir.
   - Takım içindeki görev dağılımları belirlenmiş, trello da iş bölümü yapılmıştır.
-  - Takım üyelerinin gelecek sprintlerde neler yaptığı gerektiğine değinilmiştir.
+  - Takım üyelerinin gelecek sprintlerde neler yapması gerektiğine değinilmiştir.
  
 
 
