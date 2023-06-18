@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:yourself_in_time_project/common/constants/assets_path_constants.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/helpers/circle_create_helper.dart';
+import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
 import 'package:yourself_in_time_project/common/widgets/background_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/loginViewPosition_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/register_field_widget.dart';
@@ -18,6 +19,8 @@ class RegisterView extends StatefulWidget {
 }
 
 class _RegisterViewState extends State<RegisterView> {
+  TextEditingControllerHelper textEditingControllerHelper =
+      TextEditingControllerHelper();
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -35,11 +38,12 @@ class _RegisterViewState extends State<RegisterView> {
               ),
               BackgroundWidget(),
               getLightBlueCircle(context),
-              buildRegister(model)
+              buildRegister(model, textEditingControllerHelper)
             ])));
   }
 
-  Positioned buildRegister(RegisterViewModel model) {
+  Positioned buildRegister(
+      RegisterViewModel model, TextEditingControllerHelper controllerHelper) {
     return Positioned(
       top: 70,
       left: 0,

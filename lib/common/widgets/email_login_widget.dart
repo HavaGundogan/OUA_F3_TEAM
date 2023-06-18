@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/constants/text_field_constants.dart';
-import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
-import 'package:yourself_in_time_project/common/widgets/button_navigate_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/text_create_widget.dart';
+import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 
 class EmailAndPasswordWidget extends StatefulWidget {
   final dynamic model;
-  final TextEditingControllerHelper controller;
+
   EmailAndPasswordWidget({
     Key? key,
     required this.model,
-    required this.controller,
   }) : super(key: key);
 
   @override
@@ -21,13 +20,9 @@ class EmailAndPasswordWidget extends StatefulWidget {
 }
 
 class _EmailAndPasswordWidgetState extends State<EmailAndPasswordWidget> {
-  @override
-  void dispose() {
-    widget.controller.emailController.dispose();
-
-    super.dispose();
-  }
-
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,10 +36,46 @@ class _EmailAndPasswordWidgetState extends State<EmailAndPasswordWidget> {
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 25),
           child: Column(
             children: <Widget>[
-              TextfieldConstants.emailTextField(
-                  widget.model, TextEditingControllerHelper()),
-              TextfieldConstants.passwordTextField(
-                  widget.model, TextEditingControllerHelper.passwordController)
+              Column(
+                children: [
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.email,
+                        color: ColorConstants.loginColor,
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorConstants.greyColorShade),
+                      ),
+                      labelText: "Email",
+                      enabledBorder: InputBorder.none,
+                      labelStyle: TextStyle(color: ColorConstants.greyColor),
+                    ),
+                  ),
+                ],
+              ),
+              Column(
+                children: [
+                  TextFormField(
+                    controller: _passwordController,
+                    decoration: InputDecoration(
+                      icon: Icon(
+                        Icons.vpn_key,
+                        color: ColorConstants.loginColor,
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide:
+                            BorderSide(color: ColorConstants.greyColorShade),
+                      ),
+                      labelText: "Password",
+                      enabledBorder: InputBorder.none,
+                      labelStyle: TextStyle(color: ColorConstants.greyColor),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
@@ -63,10 +94,56 @@ class _EmailAndPasswordWidgetState extends State<EmailAndPasswordWidget> {
                     color: ColorConstants.loginColor)),
           ),
         ),
-        ButtonNavigateWidget(
-          text: "SIGN IN",
-          model: widget.model,
-        ),
+        Container(
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 15),
+          child: Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: 40,
+                child: Container(
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    color: ColorConstants.buttonnavigateColor,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(20),
+                      splashColor:
+                          ColorConstants.buttonnavigateColor.withOpacity(0.4),
+                      onTap: () {
+                        {
+                          _authService
+                              .signIn(_emailController.text,
+                                  _passwordController.text)
+                              .then((value) {
+                            return widget.model.init();
+                          });
+                          print("email:${_emailController.text}");
+                        }
+                      },
+                      child: Center(
+                          child: TextFieldWidget(
+                        text: "widget.text",
+                        color: ColorConstants.colorWhite,
+                        fontWeight: FontWeight.w700,
+                      )),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [
+                        ColorConstants.lineerGradientColor,
+                        ColorConstants.lineerGradientColorTwo,
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        )
       ],
     );
   }

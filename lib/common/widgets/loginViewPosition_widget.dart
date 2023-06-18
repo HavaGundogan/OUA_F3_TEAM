@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
-import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
 import 'package:yourself_in_time_project/common/widgets/button_navigate_continue.dart';
 import 'package:yourself_in_time_project/common/widgets/email_login_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
@@ -19,7 +18,6 @@ Positioned buildWidget(BuildContext context, LoginViewModel model) {
       children: <Widget>[
         EmailAndPasswordWidget(
           model: model,
-          controller: TextEditingControllerHelper(),
         ),
         ButtonNavigateContinue(
           model: model,
@@ -58,7 +56,7 @@ Positioned buildWidget(BuildContext context, LoginViewModel model) {
         InkWell(
           splashColor: ColorConstants.buttonnavigateColor.withOpacity(0.4),
           onTap: () {
-            model.signInWithGoogle();
+            //model.signInWithGoogle();
           },
           child: Container(
             margin: const EdgeInsets.only(left: 70, right: 70),

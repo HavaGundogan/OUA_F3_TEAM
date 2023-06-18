@@ -1,8 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
-import 'package:yourself_in_time_project/common/constants/text_field_constants.dart';
-import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
-import 'package:yourself_in_time_project/common/widgets/button_navigate_widget.dart';
+
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
 
 class RegisterFieldWidget extends StatelessWidget {
@@ -14,6 +14,9 @@ class RegisterFieldWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController _nameController = TextEditingController();
+    TextEditingController _emailController = TextEditingController();
+    TextEditingController _passwordController = TextEditingController();
     return Column(
       children: [
         Container(
@@ -25,21 +28,59 @@ class RegisterFieldWidget extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 25),
           child: Column(
             children: <Widget>[
-              TextfieldConstants.nameTextField(
-                  model, TextEditingControllerHelper()),
-              TextfieldConstants.emailTextField(
-                  model, TextEditingControllerHelper()),
-              TextfieldConstants.passwordTextField(
-                  model, TextEditingControllerHelper.registerPasswordController)
+              TextFormField(
+                controller: _nameController,
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.email,
+                    color: ColorConstants.loginColor,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: ColorConstants.greyColorShade),
+                  ),
+                  labelText: "Email",
+                  enabledBorder: InputBorder.none,
+                  labelStyle: TextStyle(color: ColorConstants.greyColor),
+                ),
+              ),
+              TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.email,
+                    color: ColorConstants.loginColor,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: ColorConstants.greyColorShade),
+                  ),
+                  labelText: "Email",
+                  enabledBorder: InputBorder.none,
+                  labelStyle: TextStyle(color: ColorConstants.greyColor),
+                ),
+              ),
+              TextFormField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  icon: Icon(
+                    Icons.email,
+                    color: ColorConstants.loginColor,
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide:
+                        BorderSide(color: ColorConstants.greyColorShade),
+                  ),
+                  labelText: "Email",
+                  enabledBorder: InputBorder.none,
+                  labelStyle: TextStyle(color: ColorConstants.greyColor),
+                ),
+              ),
             ],
           ),
         ),
         const SizedBox(
           height: 20,
-        ),
-        ButtonNavigateWidget(
-          text: "SIGN UP",
-          model: model,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

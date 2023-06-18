@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TextEditingControllerHelper {
-  final TextEditingController _emailController = TextEditingController();
-  TextEditingController get emailController => _emailController;
+  static final TextEditingController emailController = TextEditingController();
 
   static final TextEditingController nameController = TextEditingController();
 
