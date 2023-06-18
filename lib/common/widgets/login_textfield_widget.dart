@@ -1,7 +1,11 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
+import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
 
-class LoginTextfieldWidget extends StatelessWidget {
+class LoginTextfieldWidget extends StatefulWidget {
+  static final GlobalKey<_LoginTextfieldWidgetState> myWidgetKey =
+      GlobalKey<_LoginTextfieldWidgetState>();
   final String text;
   final IconData icon;
   final dynamic model;
@@ -10,36 +14,46 @@ class LoginTextfieldWidget extends StatelessWidget {
     Key? key,
     required this.text,
     required this.icon,
-    required this.model,
+    this.model,
   }) : super(key: key);
+
+  @override
+  State<LoginTextfieldWidget> createState() => _LoginTextfieldWidgetState();
+}
+
+class _LoginTextfieldWidgetState extends State<LoginTextfieldWidget> {
+  TextEditingController emailController = TextEditingController();
+  @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
+  String getFormFieldText() {
+    return emailController.text;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         TextFormField(
-          onChanged: (value) {
-            model.setEmail(value);
-          },
-          validator: (value) {
-            model.validateEmail(value);
-            return model.emailError;
-          },
+          controller: emailController,
           decoration: InputDecoration(
             icon: Icon(
-              icon,
+              widget.icon,
               color: ColorConstants.loginColor,
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(color: ColorConstants.greyColorShade),
             ),
-            labelText: text,
+            labelText: widget.text,
             enabledBorder: InputBorder.none,
             labelStyle: TextStyle(color: ColorConstants.greyColor),
           ),
         ),
         Text(
-          model.emailError,
+          widget.model.emailError,
           style: TextStyle(color: Colors.red),
         )
       ],

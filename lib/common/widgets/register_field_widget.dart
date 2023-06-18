@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/constants/text_field_constants.dart';
+import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
 import 'package:yourself_in_time_project/common/widgets/button_navigate_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
 
@@ -24,9 +25,12 @@ class RegisterFieldWidget extends StatelessWidget {
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 25),
           child: Column(
             children: <Widget>[
-              TextfieldConstants.nameTextField(model),
-              TextfieldConstants.emailTextField(model),
-              TextfieldConstants.passwordTextField(model)
+              TextfieldConstants.nameTextField(
+                  model, TextEditingControllerHelper()),
+              TextfieldConstants.emailTextField(
+                  model, TextEditingControllerHelper()),
+              TextfieldConstants.passwordTextField(
+                  model, TextEditingControllerHelper.registerPasswordController)
             ],
           ),
         ),

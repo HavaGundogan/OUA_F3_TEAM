@@ -16,7 +16,7 @@ class ButtonNavigateContinue extends StatelessWidget {
         model.nextForgot();
       },
       child: Container(
-        margin: const EdgeInsets.fromLTRB(20, 0, 20, 30),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
         child: Column(
           children: [
             Container(

@@ -1,17 +1,21 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
+import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
 
 class PasswordTextFormField extends StatelessWidget {
   final String text;
   final IconData icon;
   final dynamic model;
-  const PasswordTextFormField({
+  final TextEditingController controller;
+  PasswordTextFormField({
     Key? key,
     required this.text,
     required this.icon,
     required this.model,
+    required this.controller,
   }) : super(key: key);
 
   @override
@@ -19,6 +23,7 @@ class PasswordTextFormField extends StatelessWidget {
     return Column(
       children: [
         TextFormField(
+          controller: controller,
           onChanged: (value) {
             model.setPassword(value);
           },

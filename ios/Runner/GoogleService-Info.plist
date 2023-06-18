@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>846137278053-3j152kb33v28cmb7chl9gdoa8dtjg182.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.846137278053-3j152kb33v28cmb7chl9gdoa8dtjg182</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>846137278053-4ebrgji7o4b4fg5uu7p67mj3h2th078k.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyADXGu6MzCqhnp9T17nKkA4cD3GTlf9imY</string>
+	<key>GCM_SENDER_ID</key>
+	<string>846137278053</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.yourselfInTimeProject</string>
+	<key>PROJECT_ID</key>
+	<string>team-f-3-bootcamp-project</string>
+	<key>STORAGE_BUCKET</key>
+	<string>team-f-3-bootcamp-project.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:846137278053:ios:dcabeae1703dff535bd08c</string>
+	<key>DATABASE_URL</key>
+	<string>https://team-f-3-bootcamp-project-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>

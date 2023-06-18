@@ -11,7 +11,7 @@ class BackgroundWidget extends StatelessWidget {
         bottom: 0,
         left: 0,
         right: 0,
-        top: 310,
+        top: 300,
         child: Container(
             width: size.width,
             decoration: BoxDecoration(

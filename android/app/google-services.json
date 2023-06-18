@@ -1,0 +1,135 @@
+{
+  "project_info": {
+    "project_number": "846137278053",
+    "firebase_url": "https://team-f-3-bootcamp-project-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "team-f-3-bootcamp-project",
+    "storage_bucket": "team-f-3-bootcamp-project.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846137278053:android:e1ef606f95c895ff5bd08c",
+        "android_client_info": {
+          "package_name": "com.a.b"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846137278053-1451b8g1sh81i4o5ak6liq8ssnrmosmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANj_x59fIp7K83D0pxWcm8k-nKaouuYYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846137278053-1451b8g1sh81i4o5ak6liq8ssnrmosmb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "846137278053-o0kvk4n47eeet9v8mg90akr9pjkbo0c5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teamf3.bcproject"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846137278053:android:5951e06c2839678b5bd08c",
+        "android_client_info": {
+          "package_name": "com.example.oua_f3_projects"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846137278053-i287ipi09uh69t8l4n0gbkcdeu0bvsvh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.oua_f3_projects",
+            "certificate_hash": "f1687e85ecaa90773c3de890b5d6a1f1e559b7ce"
+          }
+        },
+        {
+          "client_id": "846137278053-1451b8g1sh81i4o5ak6liq8ssnrmosmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANj_x59fIp7K83D0pxWcm8k-nKaouuYYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846137278053-1451b8g1sh81i4o5ak6liq8ssnrmosmb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "846137278053-o0kvk4n47eeet9v8mg90akr9pjkbo0c5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teamf3.bcproject"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846137278053:android:e71c15b6a1c48f8c5bd08c",
+        "android_client_info": {
+          "package_name": "com.oyunveuygulamaakademisi.yourself_in_time_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846137278053-4ebrgji7o4b4fg5uu7p67mj3h2th078k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oyunveuygulamaakademisi.yourself_in_time_project",
+            "certificate_hash": "f1687e85ecaa90773c3de890b5d6a1f1e559b7ce"
+          }
+        },
+        {
+          "client_id": "846137278053-1451b8g1sh81i4o5ak6liq8ssnrmosmb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANj_x59fIp7K83D0pxWcm8k-nKaouuYYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846137278053-1451b8g1sh81i4o5ak6liq8ssnrmosmb.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "846137278053-o0kvk4n47eeet9v8mg90akr9pjkbo0c5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.teamf3.bcproject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
