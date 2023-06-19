@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 
 class ButtonNavigateContinue extends StatelessWidget {
   final dynamic model;
@@ -11,9 +12,16 @@ class ButtonNavigateContinue extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthService _authService = AuthService();
     return GestureDetector(
-      onTap: () {
-        model.nextForgot();
+      onTap: () async {
+        // Düzenlenecekk
+        final result = await _authService.signInAnonymous();
+        if (result != null) {
+          model.init();
+        } else {
+          print("Hata ile karşılaşıldı");
+        }
       },
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),

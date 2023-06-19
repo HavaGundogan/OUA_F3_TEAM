@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
-import 'package:yourself_in_time_project/common/helpers/text_editing_form_field_helper.dart';
 
 class NameTextFieldWidget extends StatelessWidget {
   final String text;
