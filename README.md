@@ -45,7 +45,7 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
 - Planlı çalışma düzeni oluşturmakta zorlanan ve motivasyon eksikliği yaşayanlar
 
 ## Jüriye Notlar
-Firebase kısmında çıkan sorunlar düzeltilmiş ve Sprint 1 takım olarak başarılı bir şekilde tamamlanmıştır.
+Firebase kısmında çıkan sorunlar düzeltilmiştir. Google girişlerinde bir takım sorunlar oluşmaktadır ve düzeltilecektir. Sprint 1 takım olarak başarılı bir şekilde tamamlanmıştır.
 
 ---
 # Sprint 1
