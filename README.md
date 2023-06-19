@@ -50,6 +50,8 @@ Firebase kısmında çıkan sorunlar düzeltilmiştir. Google girişlerinde bir 
 ---
 # Sprint 1
 
+- **Sprint Notları**: User Story'ler Trello'da  Backglog1 altına yazılmıştır. Kartlara tıklandığında hikayelerin detayları okunabilir. 
+
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
 
