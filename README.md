@@ -66,7 +66,7 @@ Firebase kısmında çıkan sorunlar düzeltilmiştir. Google girişlerinde bir 
   [Product status 1](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status)
  
 - **Sprint Review**: 
-Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. 
+Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. Sprint Review katılımcıları: Beyza Göncüler 
 
 - **Sprint Retrospective:**
   - Roller ile ilgili düzenleme yapılmış, scrum master ve product owner belirlenmiştir.
