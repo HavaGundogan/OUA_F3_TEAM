@@ -45,7 +45,10 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
 - Planlı çalışma düzeni oluşturmakta zorlanan ve motivasyon eksikliği yaşayanlar
 
 ---
+## Jüriye Notlar
+Firebase kısmında çıkan sorunlar düzeltilmiş ve Sprint 1 takım olarak başarılı bir şekilde tamamlanmıştır.
 
+---
 # Sprint 1
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
