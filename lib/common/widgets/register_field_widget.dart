@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
+import 'package:yourself_in_time_project/common/widgets/name_text_form_widget.dart';
+import 'package:yourself_in_time_project/common/widgets/register_text_form_email_widget.dart';
+import 'package:yourself_in_time_project/common/widgets/register_text_form_password_widget.dart';
 
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
 
@@ -24,63 +27,62 @@ class RegisterFieldWidget extends StatelessWidget {
             color: ColorConstants.greyColorShade,
             borderRadius: BorderRadius.circular(10),
           ),
-          margin: const EdgeInsets.fromLTRB(20, 300, 20, 10),
+          margin: const EdgeInsets.fromLTRB(20, 250, 20, 10),
           padding: const EdgeInsets.fromLTRB(10, 0, 10, 25),
           child: Column(
             children: <Widget>[
-              TextFormField(
-                controller: _nameController,
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.email,
-                    color: ColorConstants.loginColor,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorConstants.greyColorShade),
-                  ),
-                  labelText: "Email",
-                  enabledBorder: InputBorder.none,
-                  labelStyle: TextStyle(color: ColorConstants.greyColor),
-                ),
-              ),
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.email,
-                    color: ColorConstants.loginColor,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorConstants.greyColorShade),
-                  ),
-                  labelText: "Email",
-                  enabledBorder: InputBorder.none,
-                  labelStyle: TextStyle(color: ColorConstants.greyColor),
-                ),
-              ),
-              TextFormField(
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  icon: Icon(
-                    Icons.email,
-                    color: ColorConstants.loginColor,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide:
-                        BorderSide(color: ColorConstants.greyColorShade),
-                  ),
-                  labelText: "Email",
-                  enabledBorder: InputBorder.none,
-                  labelStyle: TextStyle(color: ColorConstants.greyColor),
-                ),
-              ),
+              NameTextFormFieldWidget(nameController: _nameController),
+              RegisterTextFromFieldEmailWidget(
+                  emailController: _emailController),
+              RegisterTextFromFieldPasswordWidget(
+                  passwordController: _passwordController),
             ],
           ),
         ),
         const SizedBox(
           height: 20,
+        ),
+        Container(
+          margin: const EdgeInsets.fromLTRB(20, 0, 20, 15),
+          child: Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.5,
+                height: 40,
+                child: Container(
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    color: ColorConstants.buttonnavigateColor,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(20),
+                      splashColor:
+                          ColorConstants.buttonnavigateColor.withOpacity(0.4),
+                      onTap: () {
+                        {}
+                      },
+                      child: Center(
+                          child: TextFieldWidget(
+                        text: "SIGN UP",
+                        color: ColorConstants.colorWhite,
+                        fontWeight: FontWeight.w700,
+                      )),
+                    ),
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [
+                        ColorConstants.lineerGradientColor,
+                        ColorConstants.lineerGradientColorTwo,
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

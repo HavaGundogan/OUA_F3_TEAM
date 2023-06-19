@@ -34,7 +34,7 @@ class _RegisterViewState extends State<RegisterView> {
                 size,
                 AssetsPathConstants.welcomeJsonPath,
                 -20,
-                20,
+                -10,
               ),
               BackgroundWidget(),
               getLightBlueCircle(context),
