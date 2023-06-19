@@ -44,9 +44,13 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
 - Motivasyonunu artırmak ve destekleyici bir toplulukla etkileşimde bulunmak isteyenler
 - Planlı çalışma düzeni oluşturmakta zorlanan ve motivasyon eksikliği yaşayanlar
 
----
+## Jüriye Notlar
+Firebase kısmında çıkan sorunlar düzeltilmiştir. Google girişlerinde bir takım sorunlar oluşmaktadır ve düzeltilecektir. Sprint 1 takım olarak başarılı bir şekilde tamamlanmıştır.
 
+---
 # Sprint 1
+
+- **Sprint Notları**: User Story'ler Trello'da  Backglog1 altına yazılmıştır. Kartlara tıklandığında hikayelerin detayları okunabilir. 
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 100 Puan
 
@@ -64,7 +68,7 @@ Time Catch, toplumumuzdaki motivasyon eksikliği yaşayan bireyler için özelle
   [Product status 1](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status)
  
 - **Sprint Review**: 
-Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. 
+Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlanmış, firebase'e bağlanması sağlanmış, uygulama için veritabanı olarak firebase servisleri aktif edilmiş ve eksiklikler değerlendirilmiştir. Sprint Review katılımcıları: Beyza Göncüler 
 
 - **Sprint Retrospective:**
   - Roller ile ilgili düzenleme yapılmış, scrum master ve product owner belirlenmiştir.
