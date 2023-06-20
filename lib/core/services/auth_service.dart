@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -18,22 +20,18 @@ class AuthService {
     }
   }
 
-  Future<String?> signIn(String email, String password) async {
-    String? res;
+  Future<User?> signIn(
+      String email, String password, LoginViewModel model) async {
     try {
-      final result = await _auth.signInWithEmailAndPassword(
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      res = "success";
-    } on FirebaseAuthException catch (e) {
-      if (e.code == "user-not-found") {
-        res = "Kullanici adi veya Sifre Yanlis";
-      } else if (e.code == "wrong-password") {
-        res = "Sifre Yanlis";
-      } else if (e.code == "user-disabled") {
-        res = "Kullanici Pasif";
+      if (userCredential.user != null) {
+        model.init();
+      } else {
+        print("Kullanıcı girişi sağlanamadı");
       }
-
-      return res;
+    } catch (e) {
+      print(e);
     }
 
     signOut() async {
