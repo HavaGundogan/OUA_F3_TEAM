@@ -58,10 +58,10 @@ class _EmailAndPasswordWidgetState extends State<EmailAndPasswordWidget> {
               },
               child: Container(
                   width: 130,
-                  margin: const EdgeInsets.fromLTRB(0, 0, 20, 10),
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 10),
                   child: TextCreateWidget(
-                      text: "FORGOT PASSWORD",
-                      iconData: Icons.arrow_right,
+                      text: "Forgot Password",
+                      iconData: Icons.question_mark,
                       color: ColorConstants.loginColor)),
             ),
           ),

@@ -22,6 +22,7 @@ class LoginViewWidget extends StatefulWidget {
 class _LoginViewWidgetState extends State<LoginViewWidget> {
   bool _isloading = false;
   AuthService _authService = AuthService();
+
   Future<void> _signInWithGoogle() async {
     User? user = await _authService.signInWithGoogle();
     setState(() {
@@ -29,16 +30,22 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
     });
     if (user != null) {
       print('Google ile giriş yapıldı. Kullanıcı: ${user.displayName}');
-      String email = user.email!;
-      String displayName = user.displayName!;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Google ile giriş yapıldı.',
+          ),
+          backgroundColor: ColorConstants.snackBarBackgroundColor,
+        ),
+      );
       widget.model.init();
     } else {
-      // Giriş başarısız, hata işlemleri
       print('Google ile giriş yapılamadı.');
 
-      // Hata durumunda kullanıcıya bir bildirim gösterebilirsiniz
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Google ile giriş yaparken bir hata oluştu.')),
+        SnackBar(
+            content: Text('Google ile giriş yaparken bir hata oluştu.'),
+            backgroundColor: ColorConstants.snackBarBackgroundColorError),
       );
     }
   }

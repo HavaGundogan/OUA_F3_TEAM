@@ -10,6 +10,7 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+
   Future signInAnonymous() async {
     try {
       final result = await _auth.signInAnonymously();
@@ -55,6 +56,7 @@ class AuthService {
   Future<User?> signInWithGoogle() async {
     try {
       final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
       final credential = GoogleAuthProvider.credential(
@@ -74,6 +76,7 @@ class AuthService {
         'name': displayname,
         'password': password
       });
+
       return user;
     } catch (error) {
       print('Google Sign-In Hatası: $error');

@@ -43,4 +43,8 @@ class LoginViewModel extends AppBaseViewModel {
   nextRegister() {
     navigationService.navigateTo(Routes.registerView);
   }
+
+  backLogin() {
+    navigationService.back();
+  }
 }
