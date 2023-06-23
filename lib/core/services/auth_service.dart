@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
@@ -52,34 +52,38 @@ class AuthService {
     return null;
   }
 
-  Future<UserCredential?> signInWithGoogle() async {
+  Future<User?> signInWithGoogle() async {
     try {
-      // Google Sign-In işlemini tetikleyin
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-      // İstekten kimlik doğrulama ayrıntılarını alın
+      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
       final GoogleSignInAuthentication? googleAuth =
           await googleUser?.authentication;
-
-      // Yeni bir kimlik bilgisi oluşturun
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
         idToken: googleAuth?.idToken,
       );
-
-      // Oturum açma işlemini gerçekleştirin ve UserCredential döndürün
       final UserCredential userCredential =
-          await FirebaseAuth.instance.signInWithCredential(credential);
-      return userCredential;
+          await _auth.signInWithCredential(credential);
+      final User? user = userCredential.user;
+      final String email = user!.email!;
+      final String displayname = user.displayName!;
+      final DateTime lastLoginTime = user.metadata.lastSignInTime!;
+      final String password = "";
+      await _firestore.collection('users').doc(user.uid).set({
+        'email': email,
+        'last_login_time': lastLoginTime,
+        'name': displayname,
+        'password': password
+      });
+      return user;
     } catch (error) {
-      // Hata durumunda işlemleri yönetin
       print('Google Sign-In Hatası: $error');
       return null;
     }
   }
 
   signOut() async {
-    return await _auth.signOut();
+    await _auth.signOut();
+    await _googleSignIn.signOut();
   }
 
   Future forgotPassword(String email) async {
