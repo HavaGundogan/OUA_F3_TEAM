@@ -10,6 +10,8 @@ class ColorConstants {
   static final Color colorWhite = Colors.white;
   static final Color lightBlueCircleColor = Color(0xFFABCDF4);
   static final Color lineerGradientColor = Color(0xFFABCDF4);
+  static final Color snackBarBackgroundColor = Colors.green;
+  static final Color snackBarBackgroundColorError = Colors.red;
   static final Color lineerGradientColorTwo =
       Color.fromARGB(255, 102, 164, 235);
 }

@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
+import 'package:yourself_in_time_project/common/helpers/sign_in_helper.dart';
 import 'package:yourself_in_time_project/common/widgets/email_texformfild_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/password_textfield_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/text_create_widget.dart';
@@ -118,20 +119,8 @@ class _EmailAndPasswordWidgetState extends State<EmailAndPasswordWidget> {
   void signIn() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      final result = await _authService.signIn(
-          widget.email, widget.password, widget.model);
-      if (result != null) {
-        widget.model.init();
-      } else {
-        showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text("Hata"),
-                content: Text("Kullanıcı adı veya şifre hatalı"),
-              );
-            });
-      }
+      await _authService.signIn(
+          widget.email, widget.password, widget.model, context);
     }
   }
 }

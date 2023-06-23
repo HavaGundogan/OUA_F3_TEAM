@@ -5,9 +5,11 @@ import 'package:yourself_in_time_project/common/constants/colors_constants.dart'
 import 'package:yourself_in_time_project/common/widgets/button_navigate_continue.dart';
 import 'package:yourself_in_time_project/common/widgets/email_login_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 
 Positioned buildWidget(BuildContext context, LoginViewModel model) {
+  AuthService _authService = AuthService();
   return Positioned(
     bottom: 0,
     left: 0,
@@ -55,8 +57,8 @@ Positioned buildWidget(BuildContext context, LoginViewModel model) {
             )),
         InkWell(
           splashColor: ColorConstants.buttonnavigateColor.withOpacity(0.4),
-          onTap: () {
-            //model.signInWithGoogle();
+          onTap: () async {
+            await _authService.signInWithGoogle();
           },
           child: Container(
             margin: const EdgeInsets.only(left: 70, right: 70),

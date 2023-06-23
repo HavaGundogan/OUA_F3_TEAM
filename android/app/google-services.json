@@ -32,10 +32,10 @@
               "client_type": 3
             },
             {
-              "client_id": "846137278053-o0kvk4n47eeet9v8mg90akr9pjkbo0c5.apps.googleusercontent.com",
+              "client_id": "846137278053-3j152kb33v28cmb7chl9gdoa8dtjg182.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.teamf3.bcproject"
+                "bundle_id": "com.example.yourselfInTimeProject"
               }
             }
           ]
@@ -76,10 +76,10 @@
               "client_type": 3
             },
             {
-              "client_id": "846137278053-o0kvk4n47eeet9v8mg90akr9pjkbo0c5.apps.googleusercontent.com",
+              "client_id": "846137278053-3j152kb33v28cmb7chl9gdoa8dtjg182.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.teamf3.bcproject"
+                "bundle_id": "com.example.yourselfInTimeProject"
               }
             }
           ]
@@ -120,10 +120,10 @@
               "client_type": 3
             },
             {
-              "client_id": "846137278053-o0kvk4n47eeet9v8mg90akr9pjkbo0c5.apps.googleusercontent.com",
+              "client_id": "846137278053-3j152kb33v28cmb7chl9gdoa8dtjg182.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.teamf3.bcproject"
+                "bundle_id": "com.example.yourselfInTimeProject"
               }
             }
           ]
