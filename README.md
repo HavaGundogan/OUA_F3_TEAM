@@ -84,3 +84,30 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlan
 [Flutter Team 3 Trello Board 1](https://trello.com/b/NU5eF4cA/f-3-master-project)
 
 ---
+
+# Sprint 2
+
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 120 Puan
+
+- **Daily Scrum**: Daily Scrum toplantıları Whatsapp ve Zoom üzerinden yapılmıştır.Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linki tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats2](https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum)
+
+- **Sprint board update**: Sprint board screenshotları: 
+[Sprint Board 2](https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board) 
+
+
+- **Ürün Durumu**: Ekran görüntüleri ve videoları linkteki Project management reposundaki product status2 klasöründe verilmiştir:
+  [Product status 2](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status%202)
+ 
+- **Sprint Review**: 
+Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodlanmış, firebase servislerine bağlantıları yapılmış ve eksiklikleri değerlendirilmiştir. Sprint Review katılımcıları:  Sprint Review katılımcıları: Hava Gündoğan,Beyza Ekmekçi,Ulaş Dağdeviren, Cihat Yümsel
+
+- **Sprint Retrospective:**
+  Takım üyelerinin gelecek sprintlerde daha fazla aktif olması gerektiğine vurgu yapılmıştır.
+
+
+---
+
+## Product Backlog URL
+
+[Flutter Team 3 Trello Board 2]()
