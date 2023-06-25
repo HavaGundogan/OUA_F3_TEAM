@@ -1,11 +1,14 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:yourself_in_time_project/common/widgets/Animated_positioned_widget.dart';
 import 'package:yourself_in_time_project/ui/splash/Splash_view_model.dart';
 
 class SplashView extends StatelessWidget {
-  const SplashView({Key? key}) : super(key: key);
-
+  SplashView({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;

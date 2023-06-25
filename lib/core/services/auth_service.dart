@@ -1,15 +1,16 @@
+import 'dart:async';
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  Timer? _timer;
 
   Future signInAnonymous() async {
     try {
@@ -27,27 +28,24 @@ class AuthService {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('You are Logged in'),
-          backgroundColor: ColorConstants.snackBarBackgroundColor));
+      showStyledSnackBar(
+          'You are Logged in', context, AnimatedSnackBarType.success);
 
       model.init();
+      DocumentReference userRef =
+          _firestore.collection("users").doc(userCredential.user!.email);
+      await userRef.update({"last_login_time": FieldValue.serverTimestamp()});
       return userCredential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text('No User Found with this Email'),
-            backgroundColor: ColorConstants.snackBarBackgroundColorError));
+        showStyledSnackBar("No User Found with this Email'", context,
+            AnimatedSnackBarType.error);
       } else if (e.code == 'wrong-password') {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('Password did not match'),
-          backgroundColor: ColorConstants.snackBarBackgroundColorError,
-        ));
+        showStyledSnackBar(
+            'Password did not match', context, AnimatedSnackBarType.error);
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content: Text('An error occurred'),
-          backgroundColor: ColorConstants.snackBarBackgroundColorError,
-        ));
+        showStyledSnackBar(
+            'An error occurred', context, AnimatedSnackBarType.error);
       }
     }
     return null;
@@ -96,13 +94,33 @@ class AuthService {
     } catch (e) {}
   }
 
-  Future<User?> createPerson(String name, String email, String password) async {
-    var user = await _auth.createUserWithEmailAndPassword(
-        email: email, password: password);
-    await _firestore.collection("user").doc(user.user!.uid).set({
-      "name": name,
-      "email": email,
-    });
-    return user.user;
+  Future<User?> createPerson(
+      String name, String email, String password, BuildContext context) async {
+    try {
+      var user = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      await _firestore.collection("users").doc(user.user!.uid).set({
+        "name": name,
+        "email": email,
+        "last_login_time": FieldValue.serverTimestamp(),
+        "password": password.characters.hashCode
+      });
+      return user.user;
+    } on FirebaseAuthException catch (e) {
+      if (e.code == "email-already-in-use") {
+        showStyledSnackBar(
+            "email-already-use", context, AnimatedSnackBarType.warning);
+      } else
+        showStyledSnackBar("Wrong", context, AnimatedSnackBarType.error);
+    }
+  }
+
+  void showStyledSnackBar(
+      String message, BuildContext context, AnimatedSnackBarType type) {
+    AnimatedSnackBar.material(message,
+            type: type,
+            mobilePositionSettings:
+                const MobilePositionSettings(topOnAppearance: 30))
+        .show(context);
   }
 }

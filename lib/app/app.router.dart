@@ -80,7 +80,7 @@ class StackedRouter extends _i1.RouterBase {
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.SplashView: (data) {
       return _i9.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i2.SplashView(),
+        builder: (context) => _i2.SplashView(),
         settings: data,
       );
     },
