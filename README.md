@@ -110,4 +110,4 @@ Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodl
 
 ## Product Backlog URL
 
-[Flutter Team 3 Trello Board 2]()
+
