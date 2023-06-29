@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:lottie/lottie.dart';
+import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/widgets/verify_email_page_state_widget.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 import 'package:yourself_in_time_project/ui/register/register_view_model.dart';
@@ -121,26 +123,53 @@ class AuthService {
               context,
               AnimatedSnackBarType.success,
             );
-            Timer.periodic(Duration(seconds: 3), (_) async {
-              await _auth.currentUser!.reload();
+            Timer.periodic(Duration(seconds: 1), (_) async {
+              try {
+                await _auth.currentUser!.reload();
 
-              isEmailVerified = _auth.currentUser!.emailVerified;
+                isEmailVerified = _auth.currentUser!.emailVerified;
 
-              if (isEmailVerified) {
-                timer?.cancel();
-                await _firestore.collection('users').doc(user.uid).set({
-                  'email': email,
-                  'last_login_time': lastLoginTime,
-                  'name': name,
-                  'password': password
-                });
+                if (isEmailVerified) {
+                  timer?.cancel();
+                  await _firestore.collection('users').doc(user.uid).set({
+                    'email': email,
+                    'last_login_time': lastLoginTime,
+                    'name': name,
+                    'password': password
+                  });
+                  model.init();
+                } else {
+                  showDialog(
+                    context: context,
+                    barrierDismissible: false,
+                    barrierColor: Colors.transparent,
+                    builder: (context) {
+                      return Center(
+                        child: Container(
+                          color: ColorConstants
+                              .greyColorShade, // Set the desired background color
+                          padding: EdgeInsets.all(16),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Lottie.asset("assets/json/loading.json",
+                                  fit: BoxFit.cover, height: 50, width: 80),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+              } catch (e) {
+                signOut();
               }
             });
           } else {
             showStyledSnackBar(
               "Onay Emaili gönderilemedi ",
               context,
-              AnimatedSnackBarType.success,
+              AnimatedSnackBarType.error,
             );
           }
         } catch (e) {
