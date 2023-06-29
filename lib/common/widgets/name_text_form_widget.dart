@@ -20,7 +20,7 @@ class NameTextFormFieldWidget extends StatelessWidget {
       },
       decoration: InputDecoration(
         icon: Icon(
-          Icons.email,
+          Icons.person,
           color: ColorConstants.loginColor,
         ),
         focusedBorder: UnderlineInputBorder(

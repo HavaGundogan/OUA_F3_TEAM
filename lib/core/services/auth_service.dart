@@ -4,13 +4,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:yourself_in_time_project/common/widgets/verify_email_page_state_widget.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
+import 'package:yourself_in_time_project/ui/register/register_view_model.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  Timer? _timer;
+  bool isEmailVerified = false;
+  bool canResendEmail = false;
+  Timer? timer;
+  final TextEditingController verificationCodeController =
+      TextEditingController();
 
   Future signInAnonymous() async {
     try {
@@ -94,25 +100,89 @@ class AuthService {
     } catch (e) {}
   }
 
-  Future<User?> createPerson(
-      String name, String email, String password, BuildContext context) async {
+  Future<User?> createPerson(String name, String email, String password,
+      BuildContext context, RegisterViewModel model) async {
     try {
-      var user = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      await _firestore.collection("users").doc(user.user!.uid).set({
-        "name": name,
-        "email": email,
-        "last_login_time": FieldValue.serverTimestamp(),
-        "password": password.characters.hashCode
-      });
-      return user.user;
+      var userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      User? user = userCredential.user;
+
+      if (user != null) {
+        try {
+          final DateTime lastLoginTime = user.metadata.lastSignInTime!;
+          isEmailVerified = _auth.currentUser!.emailVerified;
+          if (isEmailVerified == false) {
+            sendVerificationEmail();
+            showStyledSnackBar(
+              "Onay email e gönderildi ",
+              context,
+              AnimatedSnackBarType.success,
+            );
+            Timer.periodic(Duration(seconds: 3), (_) => checkEmailVerified());
+          } else {
+            await _firestore.collection('users').doc(user.uid).set({
+              'email': email,
+              'last_login_time': lastLoginTime,
+              'name': name,
+              'password': password
+            });
+          }
+        } catch (e) {
+          showStyledSnackBar(
+            "Doğrulama başarısız oldu: $e",
+            context,
+            AnimatedSnackBarType.warning,
+          );
+        }
+      } else if (user == null) {
+        isEmailVerified = _auth.currentUser!.emailVerified;
+        if (!isEmailVerified) {
+          sendVerificationEmail();
+          Timer.periodic(Duration(seconds: 3), (_) => checkEmailVerified());
+        }
+
+        showStyledSnackBar("Kullanıcı başarılı bir şekilde kaydedildi", context,
+            AnimatedSnackBarType.success);
+      } else {
+        showStyledSnackBar(
+            "Bir hata oluştu!!!", context, AnimatedSnackBarType.error);
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == "email-already-in-use") {
         showStyledSnackBar(
-            "email-already-use", context, AnimatedSnackBarType.warning);
-      } else
-        showStyledSnackBar("Wrong", context, AnimatedSnackBarType.error);
+          "E-posta zaten kullanımda",
+          context,
+          AnimatedSnackBarType.warning,
+        );
+      } else {
+        showStyledSnackBar(
+          "Bir hata oluştu",
+          context,
+          AnimatedSnackBarType.error,
+        );
+      }
     }
+    return null;
+  }
+
+  Future checkEmailVerified() async {
+    await _auth.currentUser!.reload();
+
+    isEmailVerified = _auth.currentUser!.emailVerified;
+
+    if (isEmailVerified) {
+      timer?.cancel();
+    }
+  }
+
+  Future sendVerificationEmail() async {
+    try {
+      final user = _auth.currentUser!;
+      await user.sendEmailVerification();
+    } catch (e) {}
   }
 
   void showStyledSnackBar(
