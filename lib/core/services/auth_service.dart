@@ -114,21 +114,34 @@ class AuthService {
         try {
           final DateTime lastLoginTime = user.metadata.lastSignInTime!;
           isEmailVerified = _auth.currentUser!.emailVerified;
-          if (isEmailVerified == false) {
+          if (!isEmailVerified) {
             sendVerificationEmail();
             showStyledSnackBar(
               "Onay email e gönderildi ",
               context,
               AnimatedSnackBarType.success,
             );
-            Timer.periodic(Duration(seconds: 3), (_) => checkEmailVerified());
-          } else {
-            await _firestore.collection('users').doc(user.uid).set({
-              'email': email,
-              'last_login_time': lastLoginTime,
-              'name': name,
-              'password': password
+            Timer.periodic(Duration(seconds: 3), (_) async {
+              await _auth.currentUser!.reload();
+
+              isEmailVerified = _auth.currentUser!.emailVerified;
+
+              if (isEmailVerified) {
+                timer?.cancel();
+                await _firestore.collection('users').doc(user.uid).set({
+                  'email': email,
+                  'last_login_time': lastLoginTime,
+                  'name': name,
+                  'password': password
+                });
+              }
             });
+          } else {
+            showStyledSnackBar(
+              "Onay Emaili gönderilemedi ",
+              context,
+              AnimatedSnackBarType.success,
+            );
           }
         } catch (e) {
           showStyledSnackBar(
@@ -137,15 +150,6 @@ class AuthService {
             AnimatedSnackBarType.warning,
           );
         }
-      } else if (user == null) {
-        isEmailVerified = _auth.currentUser!.emailVerified;
-        if (!isEmailVerified) {
-          sendVerificationEmail();
-          Timer.periodic(Duration(seconds: 3), (_) => checkEmailVerified());
-        }
-
-        showStyledSnackBar("Kullanıcı başarılı bir şekilde kaydedildi", context,
-            AnimatedSnackBarType.success);
       } else {
         showStyledSnackBar(
             "Bir hata oluştu!!!", context, AnimatedSnackBarType.error);
@@ -166,16 +170,6 @@ class AuthService {
       }
     }
     return null;
-  }
-
-  Future checkEmailVerified() async {
-    await _auth.currentUser!.reload();
-
-    isEmailVerified = _auth.currentUser!.emailVerified;
-
-    if (isEmailVerified) {
-      timer?.cancel();
-    }
   }
 
   Future sendVerificationEmail() async {
