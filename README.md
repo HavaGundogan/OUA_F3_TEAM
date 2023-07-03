@@ -87,8 +87,11 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlan
 
 # Sprint 2
 
+- **Sprint 2 Notları**: User Story'ler Trello'da  Backglog2 altına yazılmıştır. Kartlara tıklandığında hikayelerin detayları okunabilir. 
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 120 Puan
+
+-  **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in  120 puan olmasına  karar verildi.
 
 - **Daily Scrum**: Daily Scrum toplantıları Whatsapp ve Zoom üzerinden yapılmıştır.Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linki tarafımızdan paylaşılmaktadır: [https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum%202]
 
