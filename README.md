@@ -87,17 +87,20 @@ Alınan kararlar: Kullanıcı temel sayfaları oluşturulmuş, bazıları kodlan
 
 # Sprint 2
 
+- **Sprint 2 Notları**: User Story'ler Trello'da  Backglog2 altına yazılmıştır. Kartlara tıklandığında hikayelerin detayları okunabilir. 
 
 - **Sprint içinde tamamlanması tahmin edilen puan**: 120 Puan
 
-- **Daily Scrum**: Daily Scrum toplantıları Whatsapp ve Zoom üzerinden yapılmıştır.Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linki tarafımızdan paylaşılmaktadır: [Sprint 2 Daily Scrum Chats2](https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum)
+-  **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde ikinci sprint'in  120 puan olmasına  karar verildi.
+
+- **Daily Scrum**: Daily Scrum toplantıları Whatsapp ve Zoom üzerinden yapılmıştır.Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linki tarafımızdan paylaşılmaktadır: [https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum%202]
 
 - **Sprint board update**: Sprint board screenshotları: 
-[Sprint Board 2](https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board) 
+[https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board%202] 
 
 
 - **Ürün Durumu**: Ekran görüntüleri ve videoları linkteki Project management reposundaki product status2 klasöründe verilmiştir:
-  [Product status 2](https://github.com/HavaGundogan/Project-Management/tree/main/product%20status%202)
+  [https://github.com/HavaGundogan/Project-Management/tree/main/product%20status%202]
  
 - **Sprint Review**: 
 Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodlanmış, firebase servislerine bağlantıları yapılmış ve eksiklikleri değerlendirilmiştir. Sprint Review katılımcıları:  Sprint Review katılımcıları: Hava Gündoğan,Beyza Ekmekçi,Ulaş Dağdeviren, Cihat Yümsel
@@ -110,4 +113,4 @@ Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodl
 
 ## Product Backlog URL
 
-
+https://trello.com/b/NU5eF4cA/f-3-master-project
