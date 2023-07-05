@@ -28,10 +28,10 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
               body: Stack(
                 children: <Widget>[
                   buildJsonAsset(
-                      size, AssetsPathConstants.thinkJsonPath, 0, 20),
+                      size, AssetsPathConstants.thinkJsonPath, 0, -10),
                   BackgroundWidget(),
                   getLightBlueCircle(context),
-                  buildForgotWidget(model),
+                  buildForgotWidget(model, context),
                 ],
               ),
             ));

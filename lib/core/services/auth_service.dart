@@ -36,14 +36,13 @@ class AuthService {
     try {
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
+
       showStyledSnackBar(
           'You are Logged in', context, AnimatedSnackBarType.success);
-
-      model.init();
-      DocumentReference userRef =
-          _firestore.collection("users").doc(userCredential.user!.email);
-      await userRef.update({"last_login_time": FieldValue.serverTimestamp()});
-      return userCredential.user;
+      if (userCredential.user != null) {
+        model.init();
+        return userCredential.user;
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         showStyledSnackBar("No User Found with this Email'", context,
@@ -95,10 +94,15 @@ class AuthService {
     await _googleSignIn.signOut();
   }
 
-  Future forgotPassword(String email) async {
+  Future<void> forgotPassword(String email, BuildContext context) async {
     try {
-      final result = await _auth.sendPasswordResetEmail(email: email);
-      print("Mail kutunuzu kontrol ediniz");
+      await _auth.sendPasswordResetEmail(email: email);
+
+      showStyledSnackBar(
+        "Lütfen Emailinizi kontrol ediniz!",
+        context,
+        AnimatedSnackBarType.info,
+      );
     } catch (e) {}
   }
 
@@ -131,12 +135,8 @@ class AuthService {
 
                 if (isEmailVerified) {
                   timer?.cancel();
-                  await _firestore.collection('users').doc(user.uid).set({
-                    'email': email,
-                    'last_login_time': lastLoginTime,
-                    'name': name,
-                    'password': password
-                  });
+                  await _firestore.collection('users').doc(user.uid).set(
+                      {'email': email, 'name': name, 'password': password});
                   model.init();
                 } else {
                   showDialog(
