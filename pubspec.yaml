@@ -15,8 +15,17 @@ dependencies:
  
   cupertino_icons: ^1.0.2
   get: ^4.6.5
+  intl:
+  get_storage:
+  flutter_native_timezone: 
+  rxdart: ^0.27.6
   responsive_builder: ^0.4.3
+  flutter_local_notifications: ^9.6.0
   lottie: ^1.4.2
+  date_picker_timeline:
+  sqflite:
+  flutter_staggered_animations:
+  image_picker: ^0.8.3
   font_awesome_flutter: ^10.2.1
   flutter_shapes: ^0.3.0
   provider: ^6.0.4

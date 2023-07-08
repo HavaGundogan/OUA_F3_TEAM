@@ -15,7 +15,7 @@ import 'package:yourself_in_time_project/ui/home/home_view.dart' as _i4;
 import 'package:yourself_in_time_project/ui/login/login_view.dart' as _i3;
 import 'package:yourself_in_time_project/ui/main/main_view.dart' as _i5;
 import 'package:yourself_in_time_project/ui/messages/messages_view.dart' as _i6;
-import 'package:yourself_in_time_project/ui/programming/programmin_view.dart'
+import 'package:yourself_in_time_project/ui/programming/programming_view.dart'
     as _i7;
 import 'package:yourself_in_time_project/ui/register/register_view.dart' as _i8;
 import 'package:yourself_in_time_project/ui/splash/splash_view.dart' as _i2;

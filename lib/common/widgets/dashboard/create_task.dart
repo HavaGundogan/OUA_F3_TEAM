@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:get/get.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yourself_in_time_project/common/constants/app_colors.dart';
@@ -9,6 +10,9 @@ import 'package:yourself_in_time_project/common/widgets/bottom_sheets/bottom_she
 import 'package:yourself_in_time_project/common/widgets/dashboard/sheet_goto_calendar_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/forms/form_input_unlabelled_form_input.dart';
 import 'package:yourself_in_time_project/core/utils/utils.dart';
+import 'package:yourself_in_time_project/ui/home/home_view.dart';
+import 'package:yourself_in_time_project/ui/programming/programming_view.dart';
+import 'package:yourself_in_time_project/ui/programming/programming_view_model.dart';
 
 // ignore: must_be_immutable
 class CreateTaskBottomSheet extends StatelessWidget {
@@ -93,7 +97,7 @@ class CreateTaskBottomSheet extends StatelessWidget {
               AddSubIcon(
                 scale: 0.8,
                 color: Colors.green,
-                callback: _addProject,
+                ontap: _addProject,
               ),
             ])
           ]),
@@ -103,7 +107,7 @@ class CreateTaskBottomSheet extends StatelessWidget {
   }
 
   void _addProject() {
-    //görev ekleme başarılı
+    Get.to(() => ProgrammingView());
   }
 }
 

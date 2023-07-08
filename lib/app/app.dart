@@ -4,7 +4,7 @@ import 'package:yourself_in_time_project/ui/home/home_view.dart';
 import 'package:yourself_in_time_project/ui/login/login_view.dart';
 import 'package:yourself_in_time_project/ui/main/main_view.dart';
 import 'package:yourself_in_time_project/ui/messages/messages_view.dart';
-import 'package:yourself_in_time_project/ui/programming/programmin_view.dart';
+import 'package:yourself_in_time_project/ui/programming/programming_view.dart';
 import 'package:yourself_in_time_project/ui/register/register_view.dart';
 import 'package:yourself_in_time_project/ui/splash/splash_view.dart';
 

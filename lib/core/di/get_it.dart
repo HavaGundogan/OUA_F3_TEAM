@@ -8,6 +8,7 @@ import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 import 'package:yourself_in_time_project/ui/main/main_view_model.dart';
 import 'package:yourself_in_time_project/ui/messages/messages_view_model.dart';
 import 'package:yourself_in_time_project/ui/profile/profile_view_model.dart';
+import 'package:yourself_in_time_project/ui/programming/programming_view_model.dart';
 import 'package:yourself_in_time_project/ui/register/register_view_model.dart';
 import 'package:yourself_in_time_project/ui/splash/Splash_view_model.dart';
 
@@ -26,4 +27,5 @@ void setupDi() {
   getIt.registerLazySingleton(() => HomeViewModel());
   getIt.registerLazySingleton(() => MessagesViewModel());
   getIt.registerLazySingleton(() => ProfileViewModel());
+  getIt.registerLazySingleton(() => ProgrammingViewModel());
 }
