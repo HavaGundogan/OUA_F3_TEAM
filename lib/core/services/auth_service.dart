@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:lottie/lottie.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
-import 'package:yourself_in_time_project/common/widgets/verify_email_page_state_widget.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 import 'package:yourself_in_time_project/ui/register/register_view_model.dart';
 
@@ -56,6 +55,248 @@ class AuthService {
       }
     }
     return null;
+  }
+
+  Future<String?> getTitleFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String title = querySnapshot.docs[0].get('title');
+        return title;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<String?> getCategoryFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String category = querySnapshot.docs[0].get('category');
+        return category;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<String?> getdescFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String desc = querySnapshot.docs[0].get('description');
+        return desc;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<String?> getStartDateFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String startTime = querySnapshot.docs[0].get('start_date');
+        return startTime;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<String?> getEndDateFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String endTime = querySnapshot.docs[0].get('end_date');
+        return endTime;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<String?> getTaskStatusUpdateFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String taskStatusUpdate =
+            querySnapshot.docs[0].get('task_status_update_on');
+        return taskStatusUpdate;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<int?> getisCompletedFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        int isCompleted = querySnapshot.docs[0].get('is_completed');
+        return isCompleted;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return null;
+    }
+  }
+
+  Future<int> getBoardIdFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        int boardId = querySnapshot.docs[0].get('board_id');
+        return boardId;
+      } else {
+        return 1;
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return 1;
+    }
+  }
+
+  Future<List<String>?> getMyTasksFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        List<String> myTask = querySnapshot.docs[0].get('my_tasks');
+        return myTask;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return null;
+    }
+  }
+
+  Future<String?> getTaskStateFromFirestore() async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        String taskState = querySnapshot.docs[0].get('task_state');
+        return taskState;
+      } else {
+        return '';
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return '';
+    }
+  }
+
+  Future<List<Map<String, dynamic>>> getAll() async {
+    QuerySnapshot querySnapshot = await _firestore.collection("tasks").get();
+    List<Map<String, dynamic>> tasks = [];
+    querySnapshot.docs.forEach((doc) {
+      Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+      tasks.add(data);
+    });
+    return tasks;
+  }
+
+  Future<int> getTasksLength() async {
+    // bu bize tm hespini dönderir düzelt
+    QuerySnapshot querySnapshot = await _firestore.collection("tasks").get();
+    int length = querySnapshot.docs.length;
+    return length.toInt();
+  }
+
+  Future<void> taskAdd(
+      String? title,
+      String? taskState,
+      List<String>? myTasks,
+      String? desc,
+      DateTime? startDate,
+      DateTime? endDate,
+      String? category,
+      int? isCompleted,
+      BuildContext context) async {
+    try {
+      await _firestore.collection('tasks').add({
+        'title': title,
+        'task_state': taskState,
+        'my_tasks': myTasks,
+        'description': desc,
+        'start_date': startDate,
+        'end_date': endDate,
+        'category': category
+      });
+      showStyledSnackBar(
+        "Data Added Successfully",
+        context,
+        AnimatedSnackBarType.success,
+      );
+    } catch (e) {
+      showStyledSnackBar(
+        "Error loading data!",
+        context,
+        AnimatedSnackBarType.error,
+      );
+    }
+  }
+
+  Future<String> getTitleForUser(String userId) async {
+    String title = '';
+
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('tasks')
+          .where('userId', isEqualTo: userId)
+          .limit(1)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        title = querySnapshot.docs[0].get('title') as String;
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+    }
+
+    return title;
   }
 
   Future<User?> signInWithGoogle() async {
