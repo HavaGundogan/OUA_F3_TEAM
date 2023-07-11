@@ -65,7 +65,7 @@ class _MainViewState extends State<MainView> {
               SizedBox(
                 height: 20,
               ),
-              showTask()
+              showTask(model)
             ],
           ),
         ),
@@ -73,7 +73,7 @@ class _MainViewState extends State<MainView> {
     );
   }
 
-  Widget showTask() {
+  Widget showTask(dynamic model) {
     return Expanded(
         child: ListView.builder(
             itemCount: tasks.length,
@@ -85,6 +85,7 @@ class _MainViewState extends State<MainView> {
                     child: TaskTileNew(
                       index: index,
                       shouldShowCompleteStatus: true,
+                      model: model,
                     ),
                   ));
             }));

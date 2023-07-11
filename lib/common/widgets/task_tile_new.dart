@@ -2,18 +2,21 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 
+import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/values/theme.dart';
 import 'package:yourself_in_time_project/common/widgets/dol_durma_clipper.dart';
 import 'package:yourself_in_time_project/core/services/auth_service.dart';
+import 'package:yourself_in_time_project/ui/task/task_detail.dart';
 
 class TaskTileNew extends StatefulWidget {
   final bool shouldShowCompleteStatus;
+  final dynamic model;
   int index;
   TaskTileNew({
     Key? key,
     required this.shouldShowCompleteStatus,
+    required this.model,
     required this.index,
   }) : super(key: key);
   @override
@@ -22,10 +25,12 @@ class TaskTileNew extends StatefulWidget {
 
 class _TaskTileNewState extends State<TaskTileNew> {
   AuthService _authService = AuthService();
-
+  List<String>? myTasks;
   String title = '';
   int? isComleted;
+  List<bool>? isTaskCompleted;
   String desc = '';
+  String category = '';
   String taskStatusUpdate = '';
   String startDate = '';
   String endDate = '';
@@ -38,8 +43,14 @@ class _TaskTileNewState extends State<TaskTileNew> {
   }
 
   void fetchTitleData() async {
+    List<String>? fetchedMyTask =
+        await _authService.getMyTasksFromFirestore(widget.index);
+    List<bool>? fetchedisTaskCompleted =
+        await _authService.getTitleisTaskComplete(widget.index);
     String? fetchedTitle =
         await _authService.getTitleFromFirestore(widget.index);
+    String? fetchedCategory =
+        await _authService.getCategoryFromFirestore(widget.index);
     int? fetchedisCompleted =
         await _authService.getisCompletedFromFirestore(widget.index);
     int fetchedBoardId =
@@ -52,6 +63,8 @@ class _TaskTileNewState extends State<TaskTileNew> {
     String? fetchedtaskStatus =
         await _authService.getTaskStateFromFirestore(widget.index);
     setState(() {
+      isTaskCompleted = fetchedisTaskCompleted;
+      myTasks = fetchedMyTask;
       title = fetchedTitle!;
       desc = fetchedDesc!;
       isComleted = fetchedisCompleted;
@@ -59,6 +72,7 @@ class _TaskTileNewState extends State<TaskTileNew> {
       endDate = fetchedEnd!;
       taskStatusUpdate = fetchedtaskStatus!;
       boardId = fetchedBoardId;
+      category = fetchedCategory!;
     });
   }
 
@@ -182,7 +196,16 @@ class _TaskTileNewState extends State<TaskTileNew> {
                 context: context,
                 label: "View Task",
                 color: ColorConstants.buttonColor,
-                onTap: () async {}),
+                onTap: () async {
+                  Get.to(() => TaskDetailView(
+                      startDate: startDate,
+                      myTasks: myTasks!,
+                      isIconChange: isTaskCompleted!,
+                      title: title,
+                      desc: desc,
+                      category: category,
+                      endDate: endDate));
+                }),
             bottomSheetButton(
                 context: context,
                 label: "Mark as Complete",

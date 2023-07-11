@@ -7,6 +7,7 @@ import 'package:yourself_in_time_project/ui/messages/messages_view.dart';
 import 'package:yourself_in_time_project/ui/programming/programming_view.dart';
 import 'package:yourself_in_time_project/ui/register/register_view.dart';
 import 'package:yourself_in_time_project/ui/splash/splash_view.dart';
+import 'package:yourself_in_time_project/ui/task/task_detail.dart';
 
 @StackedApp(routes: [
   MaterialRoute(page: SplashView, initial: true),
@@ -16,6 +17,6 @@ import 'package:yourself_in_time_project/ui/splash/splash_view.dart';
   MaterialRoute(page: MessagesView),
   MaterialRoute(page: ProgrammingView),
   MaterialRoute(page: RegisterView),
-  MaterialRoute(page: ForgotPasswordView)
+  MaterialRoute(page: ForgotPasswordView),
 ])
 class App {}

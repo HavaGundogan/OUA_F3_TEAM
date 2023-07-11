@@ -74,20 +74,55 @@ class AuthService {
     }
   }
 
+  Future<List<bool>?> getTitleisTaskComplete(int index) async {
+    try {
+      QuerySnapshot querySnapshot =
+          await FirebaseFirestore.instance.collection('tasks').get();
+      List<String> myTasks = [];
+      List<bool> boolList = [];
+      if (querySnapshot.docs.isNotEmpty) {
+        var list = querySnapshot.docs[index].get('is_task_complete');
+        for (var el in list) {
+          myTasks.add(list.toString());
+        }
+        for (var element in myTasks) {
+          bool boolValue = (element == "true") ? true : false;
+          boolList.add(boolValue);
+        }
+
+        return boolList;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+      return null;
+    }
+  }
+
   Future<String?> getCategoryFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
-      if (querySnapshot.docs.isNotEmpty) {
-        String category = querySnapshot.docs[index].get('category');
-        return category;
-      } else {
-        return '';
+      List<DocumentSnapshot<Map<String, dynamic>>> documents =
+          querySnapshot.docs.cast<DocumentSnapshot<Map<String, dynamic>>>();
+
+      if (documents.isNotEmpty) {
+        if (index >= 0 && index < documents.length) {
+          DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
+              documents[index];
+          Map<String, dynamic>? data = documentSnapshot.data();
+          if (data!.containsKey('category')) {
+            String category = data['category'];
+            return category;
+          }
+        }
       }
+      return null; // Koleksiyonda belge yoksa veya belge indeksi geçersizse null döndürüyoruz.
     } catch (e) {
       print('Veri alınamadı: $e');
-      return '';
+      return null; // Hata durumunda null döndürüyoruz.
     }
   }
 
@@ -198,10 +233,14 @@ class AuthService {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
-
+      List<String> myTasks = [];
       if (querySnapshot.docs.isNotEmpty) {
-        List<String> myTask = querySnapshot.docs[index].get('my_tasks');
-        return myTask;
+        var list = querySnapshot.docs[index].get('my_task');
+        for (var el in list) {
+          myTasks.add(el.toString());
+        }
+
+        return myTasks;
       } else {
         return null;
       }
