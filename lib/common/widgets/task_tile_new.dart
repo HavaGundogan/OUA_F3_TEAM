@@ -1,16 +1,20 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
+
 import 'package:yourself_in_time_project/common/values/theme.dart';
 import 'package:yourself_in_time_project/common/widgets/dol_durma_clipper.dart';
 import 'package:yourself_in_time_project/core/services/auth_service.dart';
 
 class TaskTileNew extends StatefulWidget {
   final bool shouldShowCompleteStatus;
-
-  const TaskTileNew({
+  int index;
+  TaskTileNew({
     Key? key,
     required this.shouldShowCompleteStatus,
+    required this.index,
   }) : super(key: key);
   @override
   State<TaskTileNew> createState() => _TaskTileNewState();
@@ -34,13 +38,19 @@ class _TaskTileNewState extends State<TaskTileNew> {
   }
 
   void fetchTitleData() async {
-    String? fetchedTitle = await _authService.getTitleFromFirestore();
-    int? fetchedisCompleted = await _authService.getisCompletedFromFirestore();
-    int fetchedBoardId = await _authService.getBoardIdFromFirestore();
-    String? fetchedDesc = await _authService.getdescFromFirestore();
-    String? fetchedStart = await _authService.getStartDateFromFirestore();
-    String? fetchedEnd = await _authService.getEndDateFromFirestore();
-    String? fetchedtaskStatus = await _authService.getTaskStateFromFirestore();
+    String? fetchedTitle =
+        await _authService.getTitleFromFirestore(widget.index);
+    int? fetchedisCompleted =
+        await _authService.getisCompletedFromFirestore(widget.index);
+    int fetchedBoardId =
+        await _authService.getBoardIdFromFirestore(widget.index);
+    String? fetchedDesc = await _authService.getdescFromFirestore(widget.index);
+    String? fetchedStart =
+        await _authService.getStartDateFromFirestore(widget.index);
+    String? fetchedEnd =
+        await _authService.getEndDateFromFirestore(widget.index);
+    String? fetchedtaskStatus =
+        await _authService.getTaskStateFromFirestore(widget.index);
     setState(() {
       title = fetchedTitle!;
       desc = fetchedDesc!;
@@ -54,77 +64,84 @@ class _TaskTileNewState extends State<TaskTileNew> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
-        width: MediaQuery.of(context).size.width,
-        margin: EdgeInsets.only(bottom: 12),
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              ClipPath(
-                clipper: DolDurmaClipper(right: 40, holeRadius: 20),
-                child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(15),
+    return GestureDetector(
+      onTap: () {
+        if (isComleted == 0) {
+          showBottomSheet();
+        } else {}
+      },
+      child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 20),
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.only(bottom: 12),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ClipPath(
+                  clipper: DolDurmaClipper(right: 40, holeRadius: 20),
+                  child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
+                        color: _getBGClr(boardId),
                       ),
-                      color: _getBGClr(boardId),
-                    ),
-                    width: MediaQuery.of(context).size.width,
-                    padding: EdgeInsets.all(15),
-                    child: Row(children: [
-                      Expanded(
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 25),
-                              child: Text(title,
-                                  maxLines: 1, style: boldTextStyle16),
-                            ),
-                            SizedBox(
-                              height: 12,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.access_time_rounded,
-                                  color: Colors.black87,
-                                  size: 18,
-                                ),
-                                SizedBox(width: 4),
-                                Text(
-                                  "${startDate} AM - ${endDate} AM",
-                                  style: GoogleFonts.lato(
-                                    textStyle: normalTextStyle12,
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.all(15),
+                      child: Row(children: [
+                        Expanded(
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 25),
+                                child: Text(title,
+                                    maxLines: 1, style: boldTextStyle16),
+                              ),
+                              SizedBox(
+                                height: 12,
+                              ),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.access_time_rounded,
+                                    color: Colors.black87,
+                                    size: 18,
                                   ),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 12),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 10),
-                              child: Text(desc,
-                                  style: GoogleFonts.lato(
-                                    textStyle: normalTextStyle14,
+                                  SizedBox(width: 4),
+                                  Text(
+                                    "${startDate} AM - ${endDate} AM",
+                                    style: GoogleFonts.lato(
+                                      textStyle: normalTextStyle12,
+                                    ),
                                   ),
-                                  maxLines: 2),
+                                ],
+                              ),
+                              SizedBox(height: 12),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: Text(desc,
+                                    style: GoogleFonts.lato(
+                                      textStyle: normalTextStyle14,
+                                    ),
+                                    maxLines: 2),
+                              ),
+                            ])),
+                        RotatedBox(
+                          quarterTurns: 3,
+                          child: Text(
+                            _getStatus(),
+                            style: GoogleFonts.lato(
+                              textStyle: boldTextStyle14,
                             ),
-                          ])),
-                      RotatedBox(
-                        quarterTurns: 3,
-                        child: Text(
-                          _getStatus(),
-                          style: GoogleFonts.lato(
-                            textStyle: boldTextStyle14,
                           ),
                         ),
-                      ),
-                    ])),
-              )
-            ]));
+                      ])),
+                )
+              ])),
+    );
   }
 
   _getStatus() {
@@ -138,6 +155,82 @@ class _TaskTileNewState extends State<TaskTileNew> {
       status = "TODO";
     }
     return status;
+  }
+
+  showBottomSheet() {
+    Get.bottomSheet(
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.all(10),
+        height: MediaQuery.of(context).size.height * 0.38,
+        child: Column(
+          children: [
+            Container(
+              height: 6,
+              width: 120,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50), color: Colors.grey),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            bottomSheetButton(
+                context: context,
+                label: "View Task",
+                color: ColorConstants.buttonColor,
+                onTap: () async {}),
+            bottomSheetButton(
+                context: context,
+                label: "Mark as Complete",
+                color: ColorConstants.buttonColor,
+                onTap: () {}),
+            bottomSheetButton(
+                context: context,
+                label: "Delete Task",
+                color: ColorConstants.buttonColor,
+                onTap: () {}),
+            bottomSheetButton(
+                context: context,
+                label: "Close",
+                color: Colors.white,
+                onTap: () {
+                  Get.back();
+                },
+                isClose: true),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget bottomSheetButton(
+      {required BuildContext context,
+      required String label,
+      required Function() onTap,
+      required Color color,
+      bool isClose = false}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.all(5),
+        height: 50,
+        width: MediaQuery.of(context).size.width * 0.9,
+        decoration: BoxDecoration(
+            border: Border.all(
+                width: 2, color: isClose == true ? Colors.red : color),
+            borderRadius: BorderRadius.circular(10),
+            color: isClose ? Colors.transparent : color),
+        child: Center(
+            child: Text(
+          label,
+          style: TextStyle(color: Colors.white),
+        )),
+      ),
+    );
   }
 
   _getBGClr(int no) {

@@ -57,13 +57,13 @@ class AuthService {
     return null;
   }
 
-  Future<String?> getTitleFromFirestore() async {
+  Future<String?> getTitleFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        String title = querySnapshot.docs[0].get('title');
+        String title = querySnapshot.docs[index].get('title');
         return title;
       } else {
         return '';
@@ -74,13 +74,13 @@ class AuthService {
     }
   }
 
-  Future<String?> getCategoryFromFirestore() async {
+  Future<String?> getCategoryFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        String category = querySnapshot.docs[0].get('category');
+        String category = querySnapshot.docs[index].get('category');
         return category;
       } else {
         return '';
@@ -91,13 +91,13 @@ class AuthService {
     }
   }
 
-  Future<String?> getdescFromFirestore() async {
+  Future<String?> getdescFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        String desc = querySnapshot.docs[0].get('description');
+        String desc = querySnapshot.docs[index].get('description');
         return desc;
       } else {
         return '';
@@ -108,13 +108,13 @@ class AuthService {
     }
   }
 
-  Future<String?> getStartDateFromFirestore() async {
+  Future<String?> getStartDateFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        String startTime = querySnapshot.docs[0].get('start_date');
+        String startTime = querySnapshot.docs[index].get('start_date');
         return startTime;
       } else {
         return '';
@@ -125,13 +125,13 @@ class AuthService {
     }
   }
 
-  Future<String?> getEndDateFromFirestore() async {
+  Future<String?> getEndDateFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        String endTime = querySnapshot.docs[0].get('end_date');
+        String endTime = querySnapshot.docs[index].get('end_date');
         return endTime;
       } else {
         return '';
@@ -142,14 +142,14 @@ class AuthService {
     }
   }
 
-  Future<String?> getTaskStatusUpdateFromFirestore() async {
+  Future<String?> getTaskStatusUpdateFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String taskStatusUpdate =
-            querySnapshot.docs[0].get('task_status_update_on');
+            querySnapshot.docs[index].get('task_status_update_on');
         return taskStatusUpdate;
       } else {
         return '';
@@ -160,13 +160,13 @@ class AuthService {
     }
   }
 
-  Future<int?> getisCompletedFromFirestore() async {
+  Future<int?> getisCompletedFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        int isCompleted = querySnapshot.docs[0].get('is_completed');
+        int isCompleted = querySnapshot.docs[index].get('is_completed');
         return isCompleted;
       } else {
         return null;
@@ -177,13 +177,13 @@ class AuthService {
     }
   }
 
-  Future<int> getBoardIdFromFirestore() async {
+  Future<int> getBoardIdFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        int boardId = querySnapshot.docs[0].get('board_id');
+        int boardId = querySnapshot.docs[index].get('board_id');
         return boardId;
       } else {
         return 1;
@@ -194,13 +194,13 @@ class AuthService {
     }
   }
 
-  Future<List<String>?> getMyTasksFromFirestore() async {
+  Future<List<String>?> getMyTasksFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        List<String> myTask = querySnapshot.docs[0].get('my_tasks');
+        List<String> myTask = querySnapshot.docs[index].get('my_tasks');
         return myTask;
       } else {
         return null;
@@ -211,13 +211,13 @@ class AuthService {
     }
   }
 
-  Future<String?> getTaskStateFromFirestore() async {
+  Future<String?> getTaskStateFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        String taskState = querySnapshot.docs[0].get('task_state');
+        String taskState = querySnapshot.docs[index].get('task_state');
         return taskState;
       } else {
         return '';

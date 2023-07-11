@@ -1,9 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
+
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/values/theme.dart';
 import 'package:yourself_in_time_project/common/widgets/task_tile_new.dart';
@@ -12,17 +14,35 @@ import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/main/main_view_model.dart';
 
 class MainView extends StatefulWidget {
-  const MainView({super.key});
+  const MainView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<MainView> createState() => _MainViewState();
 }
 
 class _MainViewState extends State<MainView> {
+  int isCompleted = 0;
   AuthService _authService = AuthService();
   DateTime selectedDate = DateTime.now();
   bool showCount = false;
   int todoCount = 0, completedCount = 0;
+
+  var tasks = [];
+
+  @override
+  void initState() {
+    super.initState();
+    fetchTitleData();
+  }
+
+  void fetchTitleData() async {
+    List<Map<String, dynamic>>? fetchedtasks = await _authService.getAll();
+    setState(() {
+      tasks = fetchedtasks;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,44 +65,6 @@ class _MainViewState extends State<MainView> {
               SizedBox(
                 height: 20,
               ),
-              showCount
-                  ? Padding(
-                      padding: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text("TODO : ${todoCount}"),
-                              SizedBox(width: 15),
-                              Text("COMPLETED : ${completedCount}")
-                            ],
-                          ),
-                          SizedBox(height: 5),
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Container(
-                              height: 20,
-                              child: LinearProgressIndicator(
-                                value: todoCount == 0
-                                    ? 1
-                                    : completedCount == 0
-                                        ? 0
-                                        : (completedCount * 100) /
-                                            ((todoCount + completedCount) *
-                                                100),
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    ColorConstants.progressColor),
-                                backgroundColor: ColorConstants.progressColor
-                                    .withOpacity(0.2),
-                              ),
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                        ],
-                      ),
-                    )
-                  : Container(),
-              SizedBox(height: 15),
               showTask()
             ],
           ),
@@ -94,65 +76,66 @@ class _MainViewState extends State<MainView> {
   Widget showTask() {
     return Expanded(
         child: ListView.builder(
-            itemCount: 1,
+            itemCount: tasks.length,
             itemBuilder: (context, index) {
-              var tasks = _authService.getAll();
-              String selectedDay = DateFormat('EEEE').format(selectedDate);
               return AnimationConfiguration.staggeredList(
                   position: index,
                   child: GestureDetector(
-                    onTap: () async {},
+                    onTap: () {},
                     child: TaskTileNew(
+                      index: index,
                       shouldShowCompleteStatus: true,
                     ),
                   ));
             }));
   }
 
-  Widget showBottomSheet() {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-        color: Colors.white,
-      ),
-      padding: EdgeInsets.all(10),
-      height: MediaQuery.of(context).size.height * 0.38,
-      child: Column(
-        children: [
-          Container(
-            height: 6,
-            width: 120,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50), color: Colors.grey),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          bottomSheetButton(
-              context: context,
-              label: "View Task",
-              color: ColorConstants.buttonColor,
-              onTap: () async {}),
-          bottomSheetButton(
-              context: context,
-              label: "Mark as Complete",
-              color: ColorConstants.buttonColor,
-              onTap: () {}),
-          bottomSheetButton(
-              context: context,
-              label: "Delete Task",
-              color: ColorConstants.buttonColor,
-              onTap: () {}),
-          bottomSheetButton(
-              context: context,
-              label: "Close",
-              color: Colors.white,
-              onTap: () {
-                Get.back();
-              },
-              isClose: true),
-        ],
+  showBottomSheet({required builder, required BuildContext context}) {
+    Get.bottomSheet(
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+          color: Colors.white,
+        ),
+        padding: EdgeInsets.all(10),
+        height: MediaQuery.of(context).size.height * 0.38,
+        child: Column(
+          children: [
+            Container(
+              height: 6,
+              width: 120,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50), color: Colors.grey),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            bottomSheetButton(
+                context: context,
+                label: "View Task",
+                color: ColorConstants.buttonColor,
+                onTap: () async {}),
+            bottomSheetButton(
+                context: context,
+                label: "Mark as Complete",
+                color: ColorConstants.buttonColor,
+                onTap: () {}),
+            bottomSheetButton(
+                context: context,
+                label: "Delete Task",
+                color: ColorConstants.buttonColor,
+                onTap: () {}),
+            bottomSheetButton(
+                context: context,
+                label: "Close",
+                color: Colors.white,
+                onTap: () {
+                  Get.back();
+                },
+                isClose: true),
+          ],
+        ),
       ),
     );
   }

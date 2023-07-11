@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,6 +11,7 @@ import 'package:yourself_in_time_project/common/widgets/shapes/stacked_images.da
 class Utils {
   static final double screenWidth = Get.width;
   static final double screenHeight = Get.width;
+
 }
 
 class SineCurve extends Curve {
