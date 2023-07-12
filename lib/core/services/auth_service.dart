@@ -59,8 +59,7 @@ class AuthService {
 
   Future<String?> getTitleFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String title = querySnapshot.docs[index].get('title');
@@ -74,16 +73,30 @@ class AuthService {
     }
   }
 
+  Future<void> updatedTaskCompletionStatus(int index, bool isCompleted) async {
+    try {
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
+      if (querySnapshot.docs.isNotEmpty) {
+        String docId = querySnapshot.docs[index].id;
+        await _firestore
+            .collection('tasks')
+            .doc(docId)
+            .update({'is_completed': isCompleted});
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+    }
+  }
+
   Future<List<bool>?> getTitleisTaskComplete(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
       List<String> myTasks = [];
       List<bool> boolList = [];
       if (querySnapshot.docs.isNotEmpty) {
         var list = querySnapshot.docs[index].get('is_task_complete');
         for (var el in list) {
-          myTasks.add(list.toString());
+          myTasks.add(el.toString());
         }
         for (var element in myTasks) {
           bool boolValue = (element == "true") ? true : false;
@@ -102,8 +115,7 @@ class AuthService {
 
   Future<String?> getCategoryFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       List<DocumentSnapshot<Map<String, dynamic>>> documents =
           querySnapshot.docs.cast<DocumentSnapshot<Map<String, dynamic>>>();
@@ -128,8 +140,7 @@ class AuthService {
 
   Future<String?> getdescFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String desc = querySnapshot.docs[index].get('description');
@@ -145,8 +156,7 @@ class AuthService {
 
   Future<String?> getStartDateFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String startTime = querySnapshot.docs[index].get('start_date');
@@ -162,8 +172,7 @@ class AuthService {
 
   Future<String?> getEndDateFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String endTime = querySnapshot.docs[index].get('end_date');
@@ -179,8 +188,7 @@ class AuthService {
 
   Future<String?> getTaskStatusUpdateFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String taskStatusUpdate =
@@ -195,13 +203,12 @@ class AuthService {
     }
   }
 
-  Future<int?> getisCompletedFromFirestore(int index) async {
+  Future<bool?> getisCompletedFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
-        int isCompleted = querySnapshot.docs[index].get('is_completed');
+        bool isCompleted = querySnapshot.docs[index].get('is_completed');
         return isCompleted;
       } else {
         return null;
@@ -214,8 +221,7 @@ class AuthService {
 
   Future<int> getBoardIdFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         int boardId = querySnapshot.docs[index].get('board_id');
@@ -231,8 +237,7 @@ class AuthService {
 
   Future<List<String>?> getMyTasksFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
       List<String> myTasks = [];
       if (querySnapshot.docs.isNotEmpty) {
         var list = querySnapshot.docs[index].get('my_task');
@@ -252,8 +257,7 @@ class AuthService {
 
   Future<String?> getTaskStateFromFirestore(int index) async {
     try {
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('tasks').get();
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
 
       if (querySnapshot.docs.isNotEmpty) {
         String taskState = querySnapshot.docs[index].get('task_state');

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,11 +18,19 @@ class ProgrammingView extends StatefulWidget {
 }
 
 class _ProgrammingViewState extends State<ProgrammingView> {
-  List<String> dataList = [];
+  List<bool> isTaskCompletes = [];
+  List<TextEditingController> _textFieldControllers = [];
+  TextEditingController _titleController = TextEditingController();
+  TextEditingController _descController = TextEditingController();
+  String taskState = "";
+  String category = "";
+  int boardId = 0;
+  String endDate = "";
+  String startDate = "";
+  bool isCompleted = false;
+  String taskStatusUpdate = "";
 
-  void deleteItem(int index) {
-    dataList.removeAt(index);
-  }
+  List<String> dataList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -93,11 +102,11 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                             ),
                             Row(
                               children: [
-                                chipData("Important", 0XFF2664FA),
+                                taskSelect("Important", 0XFF2664FA),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                chipData("Planned", 0xff2bc8d9)
+                                taskSelect("Planned", 0xff2bc8d9)
                               ],
                             ),
                             SizedBox(
@@ -126,29 +135,29 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                             Wrap(
                               runSpacing: 10,
                               children: [
-                                chipData("Food", 0xffff6d6e),
+                                categorySelect("Food", 0xffff6d6e),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                chipData("WorkOut", 0xfff29732),
+                                categorySelect("WorkOut", 0xfff29732),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                chipData("Work", 0xff6557ff),
+                                categorySelect("Work", 0xff6557ff),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                chipData("Design", 0xff234ebd),
+                                categorySelect("Design", 0xff234ebd),
                                 SizedBox(
                                   width: 20,
                                 ),
-                                chipData("Run", 0xff2bc8d9),
+                                categorySelect("Run", 0xff2bc8d9),
                               ],
                             ),
                             SizedBox(
                               height: 50,
                             ),
-                            button(),
+                            button(model),
                             SizedBox(
                               height: 30,
                             ),
@@ -207,6 +216,11 @@ class _ProgrammingViewState extends State<ProgrammingView> {
             shrinkWrap: true,
             itemCount: dataList.length,
             itemBuilder: (context, index) {
+              if (index >= _textFieldControllers.length) {
+                _textFieldControllers.add(TextEditingController());
+                isTaskCompletes.add(false);
+              }
+
               return Column(
                 children: [
                   Container(
@@ -224,6 +238,7 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                         color: Colors.white,
                       ),
                       title: TextField(
+                        controller: _textFieldControllers[index],
                         style: TextStyle(color: Colors.white),
                         decoration: InputDecoration(
                             border: InputBorder.none,
@@ -235,13 +250,20 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                             contentPadding:
                                 EdgeInsets.only(left: 20, right: 20)),
                         onChanged: (value) {
-                          dataList[index] = value;
+                          setState(() {
+                            if (index < dataList.length) {
+                              dataList[index] = value;
+                            }
+                          });
                         },
                       ),
                       trailing: IconButton(
                           onPressed: () {
                             setState(() {
                               deleteItem(index);
+                              if (index < dataList.length) {
+                                dataList.removeAt(index);
+                              }
                             });
                           },
                           icon: Icon(
@@ -267,19 +289,57 @@ class _ProgrammingViewState extends State<ProgrammingView> {
     );
   }
 
-  Widget button() {
-    return Container(
-      height: 56,
-      width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient:
-              LinearGradient(colors: [Color(0xff8a32f1), Color(0xffad32f9)])),
-      child: Center(
-        child: Text(
-          "Add Todo",
-          style: GoogleFonts.ubuntu(
-              color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+  void _addTextField() {
+    TextEditingController newController = TextEditingController();
+    _textFieldControllers.add(newController);
+    dataList.add('');
+
+    setState(() {}); // Widget yeniden çizilsin
+  }
+
+  void deleteItem(int index) {
+    _textFieldControllers[index].dispose();
+    _textFieldControllers.removeAt(index);
+  }
+
+  void dispose() {
+    for (var controller in _textFieldControllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
+  Widget button(ProgrammingViewModel model) {
+    return InkWell(
+      onTap: () {
+        FirebaseFirestore.instance.collection("tasks").add({
+          "title": _titleController.text,
+          "description": _descController.text,
+          "board_id": boardId,
+          "category": category,
+          "end_date": endDate,
+          "is_completed": isCompleted,
+          "my_task": dataList,
+          "is_task_complete": isTaskCompletes,
+          "start_date": startDate,
+          "task_state": taskState,
+          "task_status_update_on": taskStatusUpdate
+        });
+        model.complete();
+      },
+      child: Container(
+        height: 56,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient:
+                LinearGradient(colors: [Color(0xff8a32f1), Color(0xffad32f9)])),
+        child: Center(
+          child: Text(
+            "Add Todo",
+            style: GoogleFonts.ubuntu(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w600),
+          ),
         ),
       ),
     );
@@ -294,6 +354,7 @@ class _ProgrammingViewState extends State<ProgrammingView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
+        controller: _descController,
         style: TextStyle(
           color: Colors.grey,
           fontSize: 17,
@@ -301,7 +362,7 @@ class _ProgrammingViewState extends State<ProgrammingView> {
         maxLines: null,
         decoration: InputDecoration(
             border: InputBorder.none,
-            hintText: "Descreption",
+            hintText: "Please subscribe this channel",
             hintStyle: TextStyle(
               color: Colors.grey,
               fontSize: 17,
@@ -311,17 +372,45 @@ class _ProgrammingViewState extends State<ProgrammingView> {
     );
   }
 
-  Widget chipData(String label, int color) {
-    return Chip(
-      backgroundColor: Color(color),
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-      label: Text(label,
-          style: GoogleFonts.ubuntu(
-            color: Colors.white,
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
-          )),
-      labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+  Widget taskSelect(String label, int color) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          taskState = label;
+        });
+      },
+      child: Chip(
+        backgroundColor: taskState == label ? Colors.white : Color(color),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        label: Text(label,
+            style: GoogleFonts.ubuntu(
+              color: taskState == label ? Colors.black : Colors.white,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            )),
+        labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+      ),
+    );
+  }
+
+  Widget categorySelect(String label, int color) {
+    return InkWell(
+      onTap: () {
+        setState(() {
+          category = label;
+        });
+      },
+      child: Chip(
+        backgroundColor: category == label ? Colors.white : Color(color),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        label: Text(label,
+            style: GoogleFonts.ubuntu(
+              color: category == label ? Colors.black : Colors.white,
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+            )),
+        labelPadding: EdgeInsets.symmetric(horizontal: 17, vertical: 3.8),
+      ),
     );
   }
 
@@ -334,6 +423,7 @@ class _ProgrammingViewState extends State<ProgrammingView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: TextFormField(
+        controller: _titleController,
         style: TextStyle(
           color: Colors.grey,
           fontSize: 17,

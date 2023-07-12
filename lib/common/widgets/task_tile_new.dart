@@ -27,7 +27,7 @@ class _TaskTileNewState extends State<TaskTileNew> {
   AuthService _authService = AuthService();
   List<String>? myTasks;
   String title = '';
-  int? isComleted;
+  bool? isCompleted;
   List<bool>? isTaskCompleted;
   String desc = '';
   String category = '';
@@ -35,6 +35,11 @@ class _TaskTileNewState extends State<TaskTileNew> {
   String startDate = '';
   String endDate = '';
   int boardId = 2;
+  @override
+  setState(VoidCallback fn) {
+    super.setState(fn);
+    fetchTitleData();
+  }
 
   @override
   void initState() {
@@ -51,7 +56,7 @@ class _TaskTileNewState extends State<TaskTileNew> {
         await _authService.getTitleFromFirestore(widget.index);
     String? fetchedCategory =
         await _authService.getCategoryFromFirestore(widget.index);
-    int? fetchedisCompleted =
+    bool? fetchedisCompleted =
         await _authService.getisCompletedFromFirestore(widget.index);
     int fetchedBoardId =
         await _authService.getBoardIdFromFirestore(widget.index);
@@ -67,7 +72,7 @@ class _TaskTileNewState extends State<TaskTileNew> {
       myTasks = fetchedMyTask;
       title = fetchedTitle!;
       desc = fetchedDesc!;
-      isComleted = fetchedisCompleted;
+      isCompleted = fetchedisCompleted;
       startDate = fetchedStart!;
       endDate = fetchedEnd!;
       taskStatusUpdate = fetchedtaskStatus!;
@@ -80,7 +85,7 @@ class _TaskTileNewState extends State<TaskTileNew> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (isComleted == 0) {
+        if (isCompleted == false) {
           showBottomSheet();
         } else {}
       },
@@ -160,8 +165,9 @@ class _TaskTileNewState extends State<TaskTileNew> {
 
   _getStatus() {
     var status = "TODO";
+
     if (widget.shouldShowCompleteStatus == true) {
-      if (isComleted == 1) {
+      if (isCompleted == true) {
         status = "COMPLETED";
       } else
         status = "TODO";
@@ -207,23 +213,32 @@ class _TaskTileNewState extends State<TaskTileNew> {
                       endDate: endDate));
                 }),
             bottomSheetButton(
-                context: context,
-                label: "Mark as Complete",
-                color: ColorConstants.buttonColor,
-                onTap: () {}),
+              context: context,
+              label: "Mark as Complete",
+              color: ColorConstants.buttonColor,
+              onTap: () {
+                setState(
+                  () {
+                    _authService.updatedTaskCompletionStatus(
+                        widget.index, true);
+                    Get.back();
+                  },
+                );
+              },
+            ),
             bottomSheetButton(
                 context: context,
                 label: "Delete Task",
                 color: ColorConstants.buttonColor,
                 onTap: () {}),
             bottomSheetButton(
-                context: context,
-                label: "Close",
-                color: Colors.white,
-                onTap: () {
-                  Get.back();
-                },
-                isClose: true),
+              context: context,
+              label: "Close",
+              color: Colors.red,
+              onTap: () {
+                Get.back();
+              },
+            ),
           ],
         ),
       ),
