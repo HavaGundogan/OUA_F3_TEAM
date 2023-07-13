@@ -1,6 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:yourself_in_time_project/app/app.router.dart';
 import 'package:yourself_in_time_project/app/app_base_view_model.dart';
 
@@ -33,7 +30,7 @@ class LoginViewModel extends AppBaseViewModel {
   }
 
   init() {
-    navigationService.navigateTo(Routes.mainView);
+    navigationService.navigateTo(Routes.homeView);
   }
 
   nextForgot() {

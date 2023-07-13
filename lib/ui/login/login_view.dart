@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:yourself_in_time_project/common/constants/assets_path_constants.dart';
@@ -7,7 +6,6 @@ import 'package:yourself_in_time_project/common/helpers/circle_create_helper.dar
 import 'package:yourself_in_time_project/common/widgets/background_widget.dart';
 import 'package:yourself_in_time_project/common/widgets/loginViewPosition_widget.dart';
 import 'package:yourself_in_time_project/core/di/get_it.dart';
-import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/login/login_view_model.dart';
 
 class LoginView extends StatefulWidget {

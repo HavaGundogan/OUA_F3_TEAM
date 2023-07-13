@@ -4,12 +4,12 @@ import 'package:yourself_in_time_project/common/values/spacing.dart';
 import 'package:yourself_in_time_project/common/widgets/Dashboard/task_container_image.dart';
 import 'package:yourself_in_time_project/ui/home/home_view_model.dart';
 
-class OverviewTaskContainer extends StatefulWidget {
+class NextSeriesOverView extends StatefulWidget {
   final Color backgroundColor;
   final String imageUrl;
   final String numberOfItems;
   final String cardTitle;
-  OverviewTaskContainer(
+  NextSeriesOverView(
       {Key? key,
       required this.imageUrl,
       required this.backgroundColor,
@@ -18,17 +18,15 @@ class OverviewTaskContainer extends StatefulWidget {
       : super(key: key);
 
   @override
-  State<OverviewTaskContainer> createState() => _OverviewTaskContainerState();
+  State<NextSeriesOverView> createState() => _NextSeriesOverViewState();
 }
 
-class _OverviewTaskContainerState extends State<OverviewTaskContainer> {
-  HomeViewModel homeViewModel = HomeViewModel();
+class _NextSeriesOverViewState extends State<NextSeriesOverView> {
   @override
   Widget build(BuildContext context) {
+    final HomeViewModel homeViewModel;
     return GestureDetector(
-      onTap: () {
-        homeViewModel..nextView();
-      },
+      onTap: () {},
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: 10.0),
         child: Container(
