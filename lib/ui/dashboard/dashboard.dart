@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -8,6 +9,7 @@ import 'package:yourself_in_time_project/common/widgets/bottom_sheets/dashboard_
 import 'package:yourself_in_time_project/common/widgets/buttons/primary_tab_button.dart';
 import 'package:yourself_in_time_project/common/widgets/navigation/dashboard_header.dart';
 import 'package:yourself_in_time_project/common/widgets/shapes/app_shapes_icon.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/dashboard/dashboardTabScreen/overview.dart';
 import 'package:yourself_in_time_project/ui/dashboard/dashboardTabScreen/productivity.dart';
 import 'package:yourself_in_time_project/ui/messages/messages_view.dart';
@@ -41,7 +43,8 @@ class Dashboard extends StatelessWidget {
                 },
               ),
               AppSpaces.verticalSpace20,
-              Text("Hello,\n Ahmet Aslan 👋",
+              Text(
+                  "Hello,\n ${FirebaseAuth.instance.currentUser!.displayName} 👋",
                   style: GoogleFonts.lato(
                       color: Colors.black.withOpacity(0.7),
                       fontSize: 40,
@@ -80,7 +83,7 @@ class Dashboard extends StatelessWidget {
               AppSpaces.verticalSpace20,
               ValueListenableBuilder(
                   valueListenable: _buttonTrigger,
-                  builder: (BuildContext context, _, __) {
+                  builder: (BuildContext context, index, __) {
                     return _buttonTrigger.value == 0
                         ? DashboardOverview()
                         : DashboardProductivity();

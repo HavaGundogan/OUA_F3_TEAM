@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yourself_in_time_project/common/values/spacing.dart';
 import 'package:yourself_in_time_project/common/widgets/Dashboard/task_container_image.dart';
-import 'package:yourself_in_time_project/ui/home/home_view_model.dart';
 
 class NextOverView extends StatefulWidget {
   final Color backgroundColor;

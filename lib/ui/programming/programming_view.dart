@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
@@ -60,7 +61,9 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                         height: 30,
                       ),
                       IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.back();
+                          },
                           icon: Icon(
                             CupertinoIcons.arrow_left,
                             color: Colors.white,

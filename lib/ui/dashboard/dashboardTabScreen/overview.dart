@@ -16,29 +16,21 @@ class DashboardOverview extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    // final dynamic data = AppData.progressIndicatorList;  veritabanından gelicek veriler
-
-    // List<Widget> cards = List.generate(
-    //     5,
-    //    (index) => TaskProgressCard(
-    //         cardTitle: data[index]['cardTitle'],
-    //         rating: data[index]['rating'],
-    //         progressFigure: data[index]['progress'],
-    //        percentageGap: int.parse(data[index]['progressBar']),
-    //      ));
-
     List<Widget> cards = List.generate(
       3,
       (index) => TaskProgressCard(
-          cardTitle: "12",
-          rating: "12",
-          progressFigure: "12",
-          percentageGap: 3),
+        cardTitle: "Ders Programı",
+        startDate: "12:15",
+        endDate: "21:15",
+        progressFigure: "12",
+        percentageGap: 1,
+        desc: 'Bugün içinde yapmam gereken liste...',
+      ),
     );
     return Column(
       children: [
         Container(
-          height: 150,
+          height: 180,
           child: TCard(
             cards: cards,
           ),

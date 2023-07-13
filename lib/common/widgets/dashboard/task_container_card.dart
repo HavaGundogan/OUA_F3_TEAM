@@ -6,15 +6,19 @@ import '../Buttons/progress_card_close_button.dart';
 
 class TaskProgressCard extends StatelessWidget {
   final String cardTitle;
-  final String rating;
+  final String startDate;
+  final String endDate;
   final String progressFigure;
   final int percentageGap;
+  final String desc;
   TaskProgressCard(
       {Key? key,
-      required this.rating,
+      required this.startDate,
       required this.cardTitle,
       required this.progressFigure,
-      required this.percentageGap})
+      required this.percentageGap,
+      required this.endDate,
+      required this.desc})
       : super(key: key);
 
   @override
@@ -39,7 +43,6 @@ class TaskProgressCard extends StatelessWidget {
           ),
         ),
         child: Stack(children: [
-          Positioned(top: 10, right: 10, child: ProgressCardCloseButton()),
           Positioned(
               top: 30,
               bottom: 20,
@@ -52,7 +55,7 @@ class TaskProgressCard extends StatelessWidget {
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold, fontSize: 22)),
                   AppSpaces.verticalSpace10,
-                  Text('$rating is completed',
+                  Text('$startDate Am- $endDate AM',
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500, fontSize: 16)),
                   SizedBox(
@@ -61,7 +64,7 @@ class TaskProgressCard extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                          width: 220,
+                          width: 210,
                           height: 10,
                           decoration: BoxDecoration(
                               borderRadius:
@@ -80,11 +83,15 @@ class TaskProgressCard extends StatelessWidget {
                                 ))),
                             Expanded(flex: 1, child: SizedBox())
                           ])),
-                      Spacer(),
+                      SizedBox(
+                        width: 8,
+                      ),
                       Text("$progressFigure%",
-                          style: GoogleFonts.lato(fontWeight: FontWeight.bold))
+                          style: GoogleFonts.lato(fontWeight: FontWeight.bold)),
                     ],
-                  )
+                  ),
+                  Text("$desc",
+                      style: GoogleFonts.lato(fontWeight: FontWeight.bold))
                 ],
               ))
         ]));
