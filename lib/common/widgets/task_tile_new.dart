@@ -10,11 +10,13 @@ import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/task/task_detail.dart';
 
 class TaskTileNew extends StatefulWidget {
+  final VoidCallback onDelete;
   final bool shouldShowCompleteStatus;
   final dynamic model;
   int index;
   TaskTileNew({
     Key? key,
+    required this.onDelete,
     required this.shouldShowCompleteStatus,
     required this.model,
     required this.index,
@@ -26,25 +28,28 @@ class TaskTileNew extends StatefulWidget {
 class _TaskTileNewState extends State<TaskTileNew> {
   AuthService _authService = AuthService();
   List<String>? myTasks;
-  String title = '';
+  String? title = '';
   bool? isCompleted;
   List<bool>? isTaskCompleted;
-  String desc = '';
-  String category = '';
-  String taskStatusUpdate = '';
-  String startDate = '';
-  String endDate = '';
-  int boardId = 2;
-  @override
-  setState(VoidCallback fn) {
-    super.setState(fn);
-    fetchTitleData();
-  }
+  String? desc = '';
+  String? category = '';
+  String? taskStatusUpdate = '';
+  String? startDate = '';
+  String? endDate = '';
+  int? boardId = 2;
+  bool _isDisposed = false;
 
+  bool? isMyTask = false;
   @override
   void initState() {
     super.initState();
     fetchTitleData();
+  }
+
+  @override
+  void dispose() {
+    _isDisposed = true;
+    super.dispose();
   }
 
   void fetchTitleData() async {
@@ -67,99 +72,104 @@ class _TaskTileNewState extends State<TaskTileNew> {
         await _authService.getEndDateFromFirestore(widget.index);
     String? fetchedtaskStatus =
         await _authService.getTaskStateFromFirestore(widget.index);
-    setState(() {
-      isTaskCompleted = fetchedisTaskCompleted;
-      myTasks = fetchedMyTask;
-      title = fetchedTitle!;
-      desc = fetchedDesc!;
-      isCompleted = fetchedisCompleted;
-      startDate = fetchedStart!;
-      endDate = fetchedEnd!;
-      taskStatusUpdate = fetchedtaskStatus!;
-      boardId = fetchedBoardId;
-      category = fetchedCategory!;
-    });
+    if (!_isDisposed) {
+      setState(() {
+        isTaskCompleted = fetchedisTaskCompleted;
+        myTasks = fetchedMyTask;
+        title = fetchedTitle!;
+        desc = fetchedDesc!;
+        isCompleted = fetchedisCompleted;
+        startDate = fetchedStart!;
+        endDate = fetchedEnd!;
+        taskStatusUpdate = fetchedtaskStatus!;
+        boardId = fetchedBoardId;
+        category = fetchedCategory;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (isCompleted == false) {
-          showBottomSheet();
-        } else {}
-      },
-      child: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          width: MediaQuery.of(context).size.width,
-          margin: EdgeInsets.only(bottom: 12),
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ClipPath(
-                  clipper: DolDurmaClipper(right: 40, holeRadius: 20),
-                  child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(15),
+    return KeyedSubtree(
+      key: widget.key,
+      child: GestureDetector(
+        onTap: () {
+          if (isCompleted == false) {
+            showBottomSheet();
+          } else {}
+        },
+        child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            width: MediaQuery.of(context).size.width,
+            margin: EdgeInsets.only(bottom: 12),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  ClipPath(
+                    clipper: DolDurmaClipper(right: 40, holeRadius: 20),
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(15),
+                          ),
+                          color: _getBGClr(boardId!),
                         ),
-                        color: _getBGClr(boardId),
-                      ),
-                      width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.all(15),
-                      child: Row(children: [
-                        Expanded(
-                            child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 25),
-                                child: Text(title,
-                                    maxLines: 1, style: boldTextStyle16),
-                              ),
-                              SizedBox(
-                                height: 12,
-                              ),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.access_time_rounded,
-                                    color: Colors.black87,
-                                    size: 18,
-                                  ),
-                                  SizedBox(width: 4),
-                                  Text(
-                                    "${startDate} AM - ${endDate} AM",
-                                    style: GoogleFonts.lato(
-                                      textStyle: normalTextStyle12,
+                        width: MediaQuery.of(context).size.width,
+                        padding: EdgeInsets.all(15),
+                        child: Row(children: [
+                          Expanded(
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 25),
+                                  child: Text(title!,
+                                      maxLines: 1, style: boldTextStyle16),
+                                ),
+                                SizedBox(
+                                  height: 12,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.access_time_rounded,
+                                      color: Colors.black87,
+                                      size: 18,
                                     ),
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 12),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 10),
-                                child: Text(desc,
-                                    style: GoogleFonts.lato(
-                                      textStyle: normalTextStyle14,
+                                    SizedBox(width: 4),
+                                    Text(
+                                      "${startDate} AM - ${endDate} AM",
+                                      style: GoogleFonts.lato(
+                                        textStyle: normalTextStyle12,
+                                      ),
                                     ),
-                                    maxLines: 2),
+                                  ],
+                                ),
+                                SizedBox(height: 12),
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 10),
+                                  child: Text(desc!,
+                                      style: GoogleFonts.lato(
+                                        textStyle: normalTextStyle14,
+                                      ),
+                                      maxLines: 2),
+                                ),
+                              ])),
+                          RotatedBox(
+                            quarterTurns: 3,
+                            child: Text(
+                              _getStatus(),
+                              style: GoogleFonts.lato(
+                                textStyle: boldTextStyle14,
                               ),
-                            ])),
-                        RotatedBox(
-                          quarterTurns: 3,
-                          child: Text(
-                            _getStatus(),
-                            style: GoogleFonts.lato(
-                              textStyle: boldTextStyle14,
                             ),
                           ),
-                        ),
-                      ])),
-                )
-              ])),
+                        ])),
+                  )
+                ])),
+      ),
     );
   }
 
@@ -204,13 +214,13 @@ class _TaskTileNewState extends State<TaskTileNew> {
                 color: ColorConstants.buttonColor,
                 onTap: () async {
                   Get.to(() => TaskDetailView(
-                      startDate: startDate,
+                      startDate: startDate!,
                       myTasks: myTasks!,
                       isIconChange: isTaskCompleted!,
-                      title: title,
-                      desc: desc,
-                      category: category,
-                      endDate: endDate));
+                      title: title!,
+                      desc: desc!,
+                      category: category!,
+                      endDate: endDate!));
                 }),
             bottomSheetButton(
               context: context,
@@ -221,6 +231,7 @@ class _TaskTileNewState extends State<TaskTileNew> {
                   () {
                     _authService.updatedTaskCompletionStatus(
                         widget.index, true);
+                    _refreshData();
                     Get.back();
                   },
                 );
@@ -230,7 +241,17 @@ class _TaskTileNewState extends State<TaskTileNew> {
                 context: context,
                 label: "Delete Task",
                 color: ColorConstants.buttonColor,
-                onTap: () {}),
+                onTap: () {
+                  widget.onDelete();
+                  setState(() {
+                    _authService.deleteTaskCompletionStatus(
+                      widget.index,
+                    );
+                  });
+                  Get.back();
+
+                  _refreshData();
+                }),
             bottomSheetButton(
               context: context,
               label: "Close",
@@ -294,5 +315,9 @@ class _TaskTileNewState extends State<TaskTileNew> {
       default:
         return Color(0xFF6cd4c5);
     }
+  }
+
+  void _refreshData() {
+    fetchTitleData();
   }
 }

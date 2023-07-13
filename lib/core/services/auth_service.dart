@@ -88,6 +88,18 @@ class AuthService {
     }
   }
 
+  Future<void> deleteTaskCompletionStatus(int index) async {
+    try {
+      QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();
+      if (querySnapshot.docs.isNotEmpty) {
+        String docId = querySnapshot.docs[index].id;
+        await _firestore.collection('tasks').doc(docId).delete();
+      }
+    } catch (e) {
+      print('Veri alınamadı: $e');
+    }
+  }
+
   Future<void> updateddTaskCompletionStatus(
       int index, List<bool> isCompleted) async {
     // asdasda

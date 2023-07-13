@@ -6,6 +6,7 @@ import 'package:yourself_in_time_project/app/app.router.dart';
 import 'package:yourself_in_time_project/app/app_base_view_model.dart';
 import 'package:yourself_in_time_project/common/widgets/task_tile_new.dart';
 import 'package:yourself_in_time_project/core/di/get_it.dart';
+import 'package:yourself_in_time_project/ui/login/login_view.dart';
 import 'package:yourself_in_time_project/ui/main/main_view.dart';
 import 'package:yourself_in_time_project/ui/programming/programming_view.dart';
 import 'package:yourself_in_time_project/ui/task/task_detail.dart';
@@ -31,7 +32,7 @@ class YourselfInTimeApp extends StatelessWidget {
           navigatorObservers: [StackedService.routeObserver],
           title: "Yourself In Time App",
           debugShowCheckedModeBanner: false,
-          home: MainView()),
+          home: LoginView()),
     );
   }
 }

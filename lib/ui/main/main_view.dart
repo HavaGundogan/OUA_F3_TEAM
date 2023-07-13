@@ -83,10 +83,14 @@ class _MainViewState extends State<MainView> {
                   child: GestureDetector(
                     onTap: () {},
                     child: TaskTileNew(
-                      index: index,
-                      shouldShowCompleteStatus: true,
-                      model: model,
-                    ),
+                        index: index,
+                        shouldShowCompleteStatus: true,
+                        model: model,
+                        onDelete: () {
+                          setState(() {
+                            tasks.removeAt(index);
+                          });
+                        }),
                   ));
             }));
   }
