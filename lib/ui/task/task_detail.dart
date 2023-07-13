@@ -6,6 +6,7 @@ import 'package:stacked/stacked.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/values/theme.dart';
 import 'package:yourself_in_time_project/core/di/get_it.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/task/task_detail_view_model.dart';
 
 class TaskDetailView extends StatefulWidget {
@@ -33,8 +34,10 @@ class TaskDetailView extends StatefulWidget {
 }
 
 class _TaskDetailView extends State<TaskDetailView> {
+  List<bool> isChangedNew = [];
   @override
   Widget build(BuildContext context) {
+    AuthService _authService = AuthService();
     return ViewModelBuilder<TaskDetailViewModel>.reactive(
         viewModelBuilder: () => getIt<TaskDetailViewModel>(),
         disposeViewModel: false,

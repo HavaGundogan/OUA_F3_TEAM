@@ -2,8 +2,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
+import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
+import 'package:yourself_in_time_project/common/values/theme.dart';
 
 import 'package:yourself_in_time_project/core/di/get_it.dart';
 import 'package:yourself_in_time_project/ui/programming/programming_view_model.dart';
@@ -18,6 +21,10 @@ class ProgrammingView extends StatefulWidget {
 }
 
 class _ProgrammingViewState extends State<ProgrammingView> {
+  String _selectedTime = '';
+  String _selecteddTime = '';
+//******************************* */
+
   List<bool> isTaskCompletes = [];
   List<TextEditingController> _textFieldControllers = [];
   TextEditingController _titleController = TextEditingController();
@@ -25,8 +32,7 @@ class _ProgrammingViewState extends State<ProgrammingView> {
   String taskState = "";
   String category = "";
   int boardId = 0;
-  String endDate = "";
-  String startDate = "";
+
   bool isCompleted = false;
   String taskStatusUpdate = "";
 
@@ -128,6 +134,18 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                             SizedBox(
                               height: 12,
                             ),
+                            Row(
+                              children: [
+                                inputField(),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                inputFieldd(),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 12,
+                            ),
                             label("Category"),
                             SizedBox(
                               height: 12,
@@ -169,6 +187,124 @@ class _ProgrammingViewState extends State<ProgrammingView> {
                 ),
               ),
             ));
+  }
+
+  Widget inputField() {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "Start Time",
+              style: inputLabelTextStyle,
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 8),
+              padding: EdgeInsets.all(8),
+              height: 60,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    color: ColorConstants.buttonColor.withOpacity(0.4)),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      style: TextStyle(color: Colors.grey),
+                      readOnly: true,
+                      controller: TextEditingController(
+                        text: "${_selectedTime} PM",
+                      ),
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.access_time),
+                          color: Colors.white,
+                          onPressed: () {
+                            _showTimePicker(context);
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget inputFieldd() {
+    return Expanded(
+      child: Container(
+        margin: EdgeInsets.all(10),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("End Time", style: inputLabelTextStyle),
+            Container(
+              margin: EdgeInsets.only(top: 8),
+              padding: EdgeInsets.all(8),
+              height: 60,
+              decoration: BoxDecoration(
+                border: Border.all(
+                    color: ColorConstants.buttonColor.withOpacity(0.4)),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: TextField(
+                      style: TextStyle(color: Colors.grey),
+                      readOnly: true,
+                      controller:
+                          TextEditingController(text: "${_selecteddTime} PM"),
+                      decoration: InputDecoration(
+                        suffixIcon: IconButton(
+                          icon: Icon(Icons.access_time),
+                          color: Colors.white,
+                          onPressed: () {
+                            _showTimeePicker(context);
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  void _showTimePicker(BuildContext context) {
+    DatePicker.showTimePicker(
+      context,
+      showTitleActions: true,
+      onConfirm: (time) {
+        setState(() {
+          _selectedTime = '${time.hour}:${time.minute}';
+        });
+      },
+    );
+  }
+
+  void _showTimeePicker(BuildContext context) {
+    DatePicker.showTimePicker(
+      context,
+      showTitleActions: true,
+      onConfirm: (time) {
+        setState(() {
+          _selecteddTime = '${time.hour}:${time.minute}';
+        });
+      },
+    );
   }
 
   Widget taskAdd() {
@@ -317,11 +453,11 @@ class _ProgrammingViewState extends State<ProgrammingView> {
           "description": _descController.text,
           "board_id": boardId,
           "category": category,
-          "end_date": endDate,
+          "end_date": _selecteddTime,
           "is_completed": isCompleted,
           "my_task": dataList,
           "is_task_complete": isTaskCompletes,
-          "start_date": startDate,
+          "start_date": _selectedTime,
           "task_state": taskState,
           "task_status_update_on": taskStatusUpdate
         });

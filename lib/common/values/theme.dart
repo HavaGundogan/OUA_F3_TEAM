@@ -170,9 +170,7 @@ TextStyle get boldHeadingTextStyle {
 TextStyle get inputLabelTextStyle {
   return GoogleFonts.lato(
       textStyle: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.bold,
-          color: Get.isDarkMode ? Colors.white : ColorConstants.textColor));
+          fontSize: 14, fontWeight: FontWeight.bold, color: Colors.white));
 }
 
 TextStyle get inputHintTextStyle {
