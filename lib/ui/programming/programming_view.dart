@@ -8,9 +8,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:stacked/stacked.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/values/theme.dart';
+import 'package:yourself_in_time_project/common/widgets/dashboard/bottom_navigation_item.dart';
 
 import 'package:yourself_in_time_project/core/di/get_it.dart';
+import 'package:yourself_in_time_project/ui/dashboard/dashboard.dart';
 import 'package:yourself_in_time_project/ui/programming/programming_view_model.dart';
+
+import '../../common/widgets/dashboard/dashboard_add_button.dart';
 
 class ProgrammingView extends StatefulWidget {
   const ProgrammingView({

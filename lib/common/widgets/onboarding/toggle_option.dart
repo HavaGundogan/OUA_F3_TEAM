@@ -51,7 +51,6 @@ class ToggleLabelOption extends StatelessWidget {
               );
             }),
         Divider(height: 1, color: HexColor.fromHex("353742"))
-        // Divider(height: 1, color: HexColor.fromHex("616575"))
       ],
     );
   }

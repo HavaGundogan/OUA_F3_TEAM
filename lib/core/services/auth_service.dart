@@ -22,7 +22,7 @@ class AuthService {
   Future signInAnonymous() async {
     try {
       final result = await _auth.signInAnonymously();
-      print(result.user!.uid);
+
       return result.user;
     } catch (e) {
       print("Anon error $e");

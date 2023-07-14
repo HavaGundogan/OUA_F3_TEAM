@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -8,9 +9,14 @@ import 'package:stacked/stacked.dart';
 
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/values/theme.dart';
+import 'package:yourself_in_time_project/common/widgets/dashboard/bottom_navigation_item.dart';
+import 'package:yourself_in_time_project/common/widgets/dashboard/dashboard_add_button.dart';
+import 'package:yourself_in_time_project/common/widgets/shapes/rounded_border_with_icon.dart';
 import 'package:yourself_in_time_project/common/widgets/task_tile_new.dart';
 import 'package:yourself_in_time_project/core/di/get_it.dart';
 import 'package:yourself_in_time_project/core/services/auth_service.dart';
+import 'package:yourself_in_time_project/ui/dashboard/dashboard.dart';
+import 'package:yourself_in_time_project/ui/home/home_view.dart';
 import 'package:yourself_in_time_project/ui/main/main_view_model.dart';
 
 class MainView extends StatefulWidget {
@@ -44,32 +50,98 @@ class _MainViewState extends State<MainView> {
     });
   }
 
+  ValueNotifier<int> bottomNavigatorTrigger = ValueNotifier(0);
+  final PageStorageBucket bucket = PageStorageBucket();
+  StatelessWidget currentScreen = Dashboard();
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainViewModel>.reactive(
       viewModelBuilder: () => getIt<MainViewModel>(),
       disposeViewModel: false,
       builder: (context, model, child) => Scaffold(
-        appBar: AppBar(),
-        body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              buildText(),
-              SizedBox(
-                height: 20,
+          backgroundColor: Colors.white,
+          body: Stack(children: [
+            Positioned(
+                bottom: 0,
+                right: 0,
+                left: 0,
+                top: 0,
+                child: Container(
+                  decoration: BoxDecoration(
+                      gradient: LinearGradient(colors: [
+                    Color(0xff79cdcd),
+                    Color(0xff8deeee),
+                    Color(0xff97ffff),
+                  ])),
+                )),
+            Positioned(
+                bottom: 0,
+                right: 0,
+                left: 0,
+                top: 150,
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius:
+                          BorderRadius.only(topLeft: Radius.circular(80)),
+                      color: Colors.white),
+                )),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+              child: Stack(
+                children: [
+                  Positioned(
+                      right: 0,
+                      child: Container(
+                        width: 140,
+                        height: 140,
+                        margin: EdgeInsets.only(right: 20),
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image:
+                                    AssetImage("assets/images/timeCatch.png"),
+                                fit: BoxFit.cover)),
+                      )),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      buildIcon(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      buildText(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      buildTalk(context),
+                      taskTitle(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Divider(
+                        color: Colors.black,
+                        thickness: 2,
+                      ),
+                      showTask(model)
+                    ],
+                  ),
+                ],
               ),
-              buildTalk(context),
-              taskTitle(),
-              SizedBox(
-                height: 20,
-              ),
-              showTask(model)
-            ],
-          ),
+            ),
+          ])),
+    );
+  }
+
+  Widget buildIcon() {
+    return Row(
+      children: [
+        RoundedBorderWithIcon(
+          icon: Icons.arrow_back,
+          color: Colors.black,
+          onpressed: () {
+            Get.to(() => HomeView());
+          },
         ),
-      ),
+      ],
     );
   }
 
@@ -177,20 +249,15 @@ class _MainViewState extends State<MainView> {
   }
 
   Widget buildText() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Hi ", style: boldHeadingTextStyle),
-            SizedBox(height: 10),
-            Text(
-              "Today - ${DateFormat.yMMMMd().format(DateTime.now())}",
-              style: subHeadingStyle,
-            ),
-          ],
-        )
+        Text("Hi ", style: boldHeadingTextStyle),
+        SizedBox(height: 10),
+        Text(
+          "Today - ${DateFormat.yMMMMd().format(DateTime.now())}",
+          style: subHeadingStyle,
+        ),
       ],
     );
   }

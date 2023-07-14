@@ -6,4 +6,8 @@ class HomeViewModel extends AppBaseViewModel {
   nextView() {
     navigationService.navigateTo(Routes.mainView);
   }
+
+  programNextView() {
+    navigationService.navigateTo(Routes.programmingView);
+  }
 }

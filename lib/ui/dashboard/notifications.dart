@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:yourself_in_time_project/common/values/spacing.dart';
-import 'package:yourself_in_time_project/common/widgets/Navigation/default_back.dart';
+
 import 'package:yourself_in_time_project/common/widgets/Notification/notification_card.dart';
 import 'package:yourself_in_time_project/common/widgets/dummy/profile_dummy.dart';
+import 'package:yourself_in_time_project/common/widgets/navigation/default_back.dart';
 
 class NotificationScreen extends StatelessWidget {
   const NotificationScreen({Key? key}) : super(key: key);

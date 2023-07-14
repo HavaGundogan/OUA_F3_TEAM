@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yourself_in_time_project/common/constants/constants.dart';
 import 'package:yourself_in_time_project/common/values/spacing.dart';
-import '../Buttons/progress_card_close_button.dart';
 
 class TaskProgressCard extends StatelessWidget {
   final String cardTitle;

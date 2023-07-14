@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:yourself_in_time_project/common/widgets/shapes/rounded_border_with_icon.dart';
@@ -66,6 +67,9 @@ class _CalendarViewState extends State<CalendarView> {
                 fontSize: 20),
             formatButtonVisible: false,
             leftChevronIcon: RoundedBorderWithIcon(
+              onpressed: () {
+                Get.back();
+              },
               icon: Icons.arrow_back,
               width: 30,
               height: 30,

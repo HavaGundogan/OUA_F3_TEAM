@@ -4,7 +4,12 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart' show DateFormat;
+import 'package:yourself_in_time_project/common/widgets/shapes/rounded_border_with_icon.dart';
+import 'package:yourself_in_time_project/ui/home/home_view.dart';
+
+import '../../common/widgets/navigation/back_button.dart';
 
 class MotivationScreen extends StatefulWidget {
   MotivationScreen({Key? key, required this.title}) : super(key: key);
@@ -213,68 +218,73 @@ class _MotivationScreenState extends State<MotivationScreen> {
     );
 
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
-        ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              //custom icon
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
-                child: _calendarCarousel,
-              ), // This trailing comma makes auto-formatting nicer for build methods.
-              //custom icon without header
-              Container(
-                margin: EdgeInsets.only(
-                  top: 30.0,
-                  bottom: 16.0,
-                  left: 16.0,
-                  right: 16.0,
-                ),
-                child: new Row(
-                  children: <Widget>[
-                    Expanded(
-                        child: Text(
-                      _currentMonth,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24.0,
-                      ),
-                    )),
-                    TextButton(
-                      child: Text('PREV'),
-                      onPressed: () {
-                        setState(() {
-                          _targetDateTime = DateTime(
-                              _targetDateTime.year, _targetDateTime.month - 1);
-                          _currentMonth =
-                              DateFormat.yMMM().format(_targetDateTime);
-                        });
-                      },
-                    ),
-                    TextButton(
-                      child: Text('NEXT'),
-                      onPressed: () {
-                        setState(() {
-                          _targetDateTime = DateTime(
-                              _targetDateTime.year, _targetDateTime.month + 1);
-                          _currentMonth =
-                              DateFormat.yMMM().format(_targetDateTime);
-                        });
-                      },
-                    )
-                  ],
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.symmetric(horizontal: 16.0),
-                child: _calendarCarouselNoHeader,
-              ), //
-            ],
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
+          //custom icon
+          Padding(
+            padding: EdgeInsets.only(top: 30, left: 10),
+            child: RoundedBorderWithIcon(
+              icon: Icons.arrow_back,
+              color: Colors.black,
+              onpressed: () {
+                Get.to(() => HomeView());
+              },
+            ),
           ),
-        ));
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 16.0),
+            child: _calendarCarousel,
+          ), // This trailing comma makes auto-formatting nicer for build methods.
+          //custom icon without header
+          Container(
+            margin: EdgeInsets.only(
+              top: 30.0,
+              bottom: 16.0,
+              left: 16.0,
+              right: 16.0,
+            ),
+            child: new Row(
+              children: <Widget>[
+                Expanded(
+                    child: Text(
+                  _currentMonth,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24.0,
+                  ),
+                )),
+                TextButton(
+                  child: Text('PREV'),
+                  onPressed: () {
+                    setState(() {
+                      _targetDateTime = DateTime(
+                          _targetDateTime.year, _targetDateTime.month - 1);
+                      _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+                    });
+                  },
+                ),
+                TextButton(
+                  child: Text('NEXT'),
+                  onPressed: () {
+                    setState(() {
+                      _targetDateTime = DateTime(
+                          _targetDateTime.year, _targetDateTime.month + 1);
+                      _currentMonth = DateFormat.yMMM().format(_targetDateTime);
+                    });
+                  },
+                )
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 16.0),
+            child: _calendarCarouselNoHeader,
+          ), //
+        ],
+      ),
+    ));
   }
 }

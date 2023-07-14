@@ -25,13 +25,13 @@ class DashboardSettingsBottomSheet extends StatelessWidget {
       BottomSheetHolder(),
       AppSpaces.verticalSpace20,
       ToggleLabelOption(
-          label: '    Total Task',
+          label: '    notification',
           notifierValue: totalTaskNotifier,
-          icon: Icons.check_circle_outline),
+          icon: Icons.notifications_active),
       ToggleLabelOption(
-          label: '    Task Due Soon',
+          label: '    Enlarge',
           notifierValue: totalDueNotifier,
-          icon: Icons.batch_prediction),
+          icon: Icons.text_fields),
       ToggleLabelOption(
           label: '    Completed',
           notifierValue: totalCompletedNotifier,

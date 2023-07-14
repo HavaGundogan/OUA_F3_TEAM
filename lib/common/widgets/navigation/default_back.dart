@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yourself_in_time_project/common/constants/app_colors.dart';
 import 'package:yourself_in_time_project/common/widgets/profile/text_outlined_button_with_text.dart';
+import 'package:yourself_in_time_project/common/widgets/shapes/rounded_border_with_icon.dart';
+import 'package:yourself_in_time_project/ui/home/home_view.dart';
 import 'package:yourself_in_time_project/ui/profile/edit_profile.dart';
 import '../dummy/profile_dummy.dart';
 import 'back_button.dart';
@@ -16,9 +18,8 @@ class DefaultNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      AppBackButton(),
       Text(this.title,
-          style: GoogleFonts.lato(fontSize: 20, color: Colors.blue)),
+          style: GoogleFonts.lato(fontSize: 20, color: Colors.white)),
       Builder(builder: (context) {
         if (type == ProfileDummyType.Icon) {
           return ProfileDummy(

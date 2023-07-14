@@ -5,4 +5,8 @@ class MainViewModel extends AppBaseViewModel {
   init() {
     navigationService.navigateTo(Routes.loginView);
   }
+
+  newxtProgramming() {
+    navigationService.navigateTo(Routes.programmingView);
+  }
 }

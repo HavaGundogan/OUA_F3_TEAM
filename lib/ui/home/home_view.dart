@@ -22,6 +22,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  HomeViewModel homeViewModel = HomeViewModel();
   ValueNotifier<int> bottomNavigatorTrigger = ValueNotifier(0);
   final PageStorageBucket bucket = PageStorageBucket();
   StatelessWidget currentScreen = Dashboard();
@@ -73,9 +74,7 @@ class _HomeViewState extends State<HomeView> {
                       Spacer(),
                       DashboardAddButton(
                         iconTapped: (() {
-                          showAppBottomSheet(Container(
-                              height: Utils.screenHeight * 0.8,
-                              child: DashboardAddBottomSheet()));
+                          homeViewModel.programNextView();
                         }),
                       ),
                       Spacer(),

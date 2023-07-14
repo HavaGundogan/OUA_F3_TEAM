@@ -1,3 +1,4 @@
+import 'package:animated_snack_bar/animated_snack_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -29,24 +30,12 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
       _isloading = true;
     });
     if (user != null) {
-      print('Google ile giriş yapıldı. Kullanıcı: ${user.displayName}');
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            'Google ile giriş yapıldı.',
-          ),
-          backgroundColor: ColorConstants.snackBarBackgroundColor,
-        ),
-      );
+      showStyledSnackBar(
+          "Signed in with google", context, AnimatedSnackBarType.success);
       widget.model.init();
     } else {
-      print('Google ile giriş yapılamadı.');
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-            content: Text('Google ile giriş yaparken bir hata oluştu.'),
-            backgroundColor: ColorConstants.snackBarBackgroundColorError),
-      );
+      showStyledSnackBar(
+          "Could not login with google", context, AnimatedSnackBarType.error);
     }
   }
 
@@ -156,5 +145,14 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
         ),
       ],
     );
+  }
+
+  void showStyledSnackBar(
+      String message, BuildContext context, AnimatedSnackBarType type) {
+    AnimatedSnackBar.material(message,
+            type: type,
+            mobilePositionSettings:
+                const MobilePositionSettings(topOnAppearance: 30))
+        .show(context);
   }
 }

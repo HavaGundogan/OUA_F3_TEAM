@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:yourself_in_time_project/common/constants/app_colors.dart';
 import 'package:yourself_in_time_project/common/values/spacing.dart';
+import 'package:yourself_in_time_project/ui/home/home_view_model.dart';
 
 class DailyGoalCard extends StatelessWidget {
   const DailyGoalCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    HomeViewModel homeViewModel = HomeViewModel();
     return Container(
         width: double.infinity,
         padding: EdgeInsets.all(20.0),
@@ -65,7 +67,9 @@ class DailyGoalCard extends StatelessWidget {
                     width: 120,
                     height: 40,
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          homeViewModel.nextView();
+                        },
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all<Color>(
                                 HexColor.fromHex("C25FFF")),
