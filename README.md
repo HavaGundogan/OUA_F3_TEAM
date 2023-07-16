@@ -114,3 +114,34 @@ Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodl
 ## Product Backlog URL
 
 https://trello.com/b/NU5eF4cA/f-3-master-project
+
+# Sprint 3
+
+- **Sprint 3 Notları**: User Story'ler Trello'da  Backglog3 altına yazılmıştır. Kartlara tıklandığında hikayelerin detayları okunabilir. 
+
+- **Sprint içinde tamamlanması tahmin edilen puan**: 120 Puan
+
+-  **Puan tamamlama mantığı**: Toplamda proje boyunca tamamlanması gereken 340 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde üçüncü sprint'in  120 puan olmasına  karar verildi.
+
+- **Daily Scrum**: Daily Scrum toplantıları Whatsapp ve Zoom üzerinden yapılmıştır.Daily Scrum toplantısı örneği Project Management reposunda Daily Scrum klasörünün içerisinde ekran görüntüleri yer almaktadır. Sizinle linki tarafımızdan paylaşılmaktadır: [https://github.com/HavaGundogan/Project-Management/tree/main/Daily%20Scrum3]
+
+- **Sprint board update**: Sprint board screenshotları: 
+  [https://github.com/HavaGundogan/Project-Management/tree/main/Sprint%20Board3] 
+
+
+- **Ürün Durumu**: Ekran görüntüleri ve videoları linkteki Project management reposundaki product status3 klasöründe verilmiştir:
+  [https://github.com/HavaGundogan/Project-Management/tree/main/product%20status%203]
+ 
+- **Sprint Review**: 
+Alınan kararlar: Kullanıcı temel sayfaların arayüzleri, algoritmaları kodlanmış, firebase servislerine bağlantıları yapılmış ve tamamlanamayan sayfalar grup içerisinde değerlendirilmiştir. Sprint Review katılımcıları: Hava Gündoğan,Beyza Ekmekçi,Ulaş Dağdeviren, Cihat Yümsel
+
+- **Sprint Retrospective:**
+  Takım üyelerinin gelecek projelerde daha fazla aktif rol oynamaları gerektiği vurgulanmıştır.
+
+
+---
+
+## Product Backlog URL
+
+https://trello.com/b/NU5eF4cA/f-3-master-project
+
