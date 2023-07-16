@@ -39,6 +39,7 @@ class _SplashView extends State<SplashView> with TickerProviderStateMixin {
     _timeController.dispose();
   }
 
+//
   @override
   Widget build(BuildContext context) {
     var screenHeight = MediaQuery.of(context).size.height;

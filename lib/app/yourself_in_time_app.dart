@@ -29,7 +29,7 @@ class YourselfInTimeApp extends StatelessWidget {
           navigatorObservers: [StackedService.routeObserver],
           title: "Yourself In Time App",
           debugShowCheckedModeBanner: false,
-          home: OnBoardingScreen()),
+          home: SplashView()),
     );
   }
 }
