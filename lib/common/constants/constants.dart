@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yourself_in_time_project/common/constants/app_colors.dart';
 import 'package:yourself_in_time_project/ui/dashboard/dashboard.dart';
-import 'package:yourself_in_time_project/ui/dashboard/notifications.dart';
+
+import 'package:yourself_in_time_project/ui/messages/messages.dart';
 import 'package:yourself_in_time_project/ui/motivation/motivation_screen.dart';
 import 'package:yourself_in_time_project/ui/profile/my_profile.dart';
 
@@ -11,7 +12,7 @@ final List<Widget> dashBoardScreens = [
   MotivationScreen(
     title: 'Date',
   ), //argümen aldı
-  NotificationScreen(),
+  MyHomePage(title: "Messages"),
   ProfilePage()
 ];
 List<Color> progressCardGradientList = [

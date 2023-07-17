@@ -54,13 +54,14 @@ class _NextSeriesOverViewState extends State<NextSeriesOverView> {
                   ],
                 ),
                 Row(children: [
-                  Text(widget.numberOfItems,
-                      style: GoogleFonts.lato(
-                          color: widget.backgroundColor,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 20)),
+                  Text(
+                    widget.numberOfItems,
+                    style: GoogleFonts.lato(
+                        color: Colors.blue,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                  ),
                   AppSpaces.horizontalSpace20,
-                  Icon(Icons.chevron_right, color: Colors.white, size: 30)
                 ])
               ],
             )),

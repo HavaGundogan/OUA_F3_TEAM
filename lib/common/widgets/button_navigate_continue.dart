@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:yourself_in_time_project/common/constants/colors_constants.dart';
 import 'package:yourself_in_time_project/common/widgets/text_field_widget.dart';
 import 'package:yourself_in_time_project/core/services/auth_service.dart';
+import 'package:yourself_in_time_project/ui/messages/messages.dart';
 
 class ButtonNavigateContinue extends StatelessWidget {
   final dynamic model;
@@ -18,7 +20,9 @@ class ButtonNavigateContinue extends StatelessWidget {
         // Düzenlenecekk
         final result = await _authService.signInAnonymous();
         if (result != null) {
-          model.init();
+          Get.to(() => MyHomePage(
+                title: 'Messages',
+              ));
         } else {
           print("Hata ile karşılaşıldı");
         }

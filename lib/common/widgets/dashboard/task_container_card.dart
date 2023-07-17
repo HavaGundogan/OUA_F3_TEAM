@@ -54,7 +54,7 @@ class TaskProgressCard extends StatelessWidget {
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.bold, fontSize: 22)),
                   AppSpaces.verticalSpace10,
-                  Text('$startDate Am- $endDate AM',
+                  Text('$startDate Am- $endDate Am',
                       style: GoogleFonts.lato(
                           fontWeight: FontWeight.w500, fontSize: 16)),
                   SizedBox(

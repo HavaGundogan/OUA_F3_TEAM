@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 
@@ -89,18 +90,6 @@ class _MainViewState extends State<MainView> {
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 40),
               child: Stack(
                 children: [
-                  Positioned(
-                      right: 0,
-                      child: Container(
-                        width: 140,
-                        height: 140,
-                        margin: EdgeInsets.only(right: 20),
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image:
-                                    AssetImage("assets/images/timeCatch.png"),
-                                fit: BoxFit.cover)),
-                      )),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -110,7 +99,7 @@ class _MainViewState extends State<MainView> {
                       ),
                       buildText(),
                       SizedBox(
-                        height: 20,
+                        height: 30,
                       ),
                       buildTalk(context),
                       taskTitle(),
@@ -147,24 +136,43 @@ class _MainViewState extends State<MainView> {
 
   Widget showTask(dynamic model) {
     return Expanded(
-        child: ListView.builder(
-            itemCount: tasks.length,
-            itemBuilder: (context, index) {
-              return AnimationConfiguration.staggeredList(
+      child: ValueListenableBuilder(
+        valueListenable: bottomNavigatorTrigger,
+        builder: (context, value, child) {
+          if (tasks.isEmpty) {
+            return Center(
+              child: Text(
+                "You don't have any tasks.",
+                style: GoogleFonts.aBeeZee(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            );
+          } else {
+            return ListView.builder(
+              itemCount: tasks.length,
+              itemBuilder: (context, index) {
+                return AnimationConfiguration.staggeredList(
                   position: index,
                   child: GestureDetector(
                     onTap: () {},
                     child: TaskTileNew(
-                        index: index,
-                        shouldShowCompleteStatus: true,
-                        model: model,
-                        onDelete: () {
-                          setState(() {
-                            tasks.removeAt(index);
-                          });
-                        }),
-                  ));
-            }));
+                      index: index,
+                      shouldShowCompleteStatus: true,
+                      model: model,
+                      onDelete: () {
+                        setState(() {
+                          tasks.removeAt(index);
+                        });
+                      },
+                    ),
+                  ),
+                );
+              },
+            );
+          }
+        },
+      ),
+    );
   }
 
   showBottomSheet({required builder, required BuildContext context}) {
@@ -305,18 +313,6 @@ class _MainViewState extends State<MainView> {
         Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text("Today's Task", style: toolbarTitleStyle),
         ]),
-        GestureDetector(
-          onTap: () async {},
-          child: Text(
-            'View All Tasks',
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: ColorConstants.buttonColor,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-        ),
       ]),
     );
   }

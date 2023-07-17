@@ -128,7 +128,7 @@ class BottomPart extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "Zamanını Elinde Tutmak mı istiyorsun ?",
+              "Do you want to keep time in your hands ?",
               style: GoogleFonts.ubuntu(
                   fontSize: 27.0,
                   fontWeight: FontWeight.bold,
@@ -138,8 +138,8 @@ class BottomPart extends StatelessWidget {
               height: 30.0,
             ),
             Text(
-              'Zaman, geri döndürülmesi, depolanması ve durdurulması mümkün olmayan kıt bir kaynaktır.'
-              'Bu kıt kaynağın ne kadar etkin kullanıldığı, insanların kendilerini ve çevrelerini ne kadar geliştirebildiklerini belirleyen en önemli unsurdur.',
+              'Time is a scarce resource that cannot be reversed, stored or stopped'
+              'How effectively this scarce resource is used is the most important factor in determining how much people can improve themselves and their surroundings.',
               style: GoogleFonts.ubuntu(
                   fontSize: 15.0,
                   color: Colors.white.withOpacity(0.8),

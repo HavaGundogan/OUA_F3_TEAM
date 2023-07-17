@@ -25,17 +25,23 @@ class _LoginViewWidgetState extends State<LoginViewWidget> {
   AuthService _authService = AuthService();
 
   Future<void> _signInWithGoogle() async {
-    User? user = await _authService.signInWithGoogle();
-    setState(() {
-      _isloading = true;
-    });
-    if (user != null) {
+    try {
+      User? user = await _authService.signInWithGoogle();
+      setState(() {
+        _isloading = true;
+      });
+      if (user != null) {
+        showStyledSnackBar(
+            "Signed in with google", context, AnimatedSnackBarType.success);
+        widget.model.init();
+      } else {
+        showStyledSnackBar(
+            "Could not login with google", context, AnimatedSnackBarType.error);
+      }
+    } on Exception catch (e) {
       showStyledSnackBar(
-          "Signed in with google", context, AnimatedSnackBarType.success);
-      widget.model.init();
-    } else {
-      showStyledSnackBar(
-          "Could not login with google", context, AnimatedSnackBarType.error);
+          "Unknown error !", context, AnimatedSnackBarType.error);
+      widget.model.backLogin();
     }
   }
 

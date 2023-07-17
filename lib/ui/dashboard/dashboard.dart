@@ -85,7 +85,7 @@ class Dashboard extends StatelessWidget {
                   valueListenable: _buttonTrigger,
                   builder: (BuildContext context, index, __) {
                     return _buttonTrigger.value == 0
-                        ? DashboardOverview()
+                        ? DashboardOverview(index: index)
                         : DashboardProductivity();
                   })
             ]),

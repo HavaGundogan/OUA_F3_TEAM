@@ -36,10 +36,6 @@ class DashboardSettingsBottomSheet extends StatelessWidget {
           label: '    Completed',
           notifierValue: totalCompletedNotifier,
           icon: Icons.check_circle),
-      ToggleLabelOption(
-          label: '    Working On',
-          notifierValue: workingOnNotifier,
-          icon: Icons.flag),
       Spacer(),
       Padding(
         padding: EdgeInsets.only(right: 20.0, left: 20.0, bottom: 20.0),

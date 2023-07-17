@@ -12,6 +12,7 @@ import 'package:yourself_in_time_project/common/widgets/container_label.dart';
 import 'package:yourself_in_time_project/common/widgets/darkBackground/dark_radial_background.dart';
 import 'package:yourself_in_time_project/common/widgets/dummy/profile_dummy.dart';
 import 'package:yourself_in_time_project/core/di/get_it.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/profile/my_profile.dart';
 import 'package:yourself_in_time_project/ui/profile/profile_notification.dart';
 import 'package:yourself_in_time_project/ui/profile/profile_view_model.dart';
@@ -24,6 +25,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    AuthService _autservice = AuthService();
     return ViewModelBuilder<ProfileViewModel>.reactive(
         viewModelBuilder: () => getIt<ProfileViewModel>(),
         disposeViewModel: false,
@@ -143,19 +145,25 @@ class ProfileView extends StatelessWidget {
                             badgeColor: "FDA5FF",
                           ),
                           AppSpaces.verticalSpace20,
-                          Container(
-                              width: double.infinity,
-                              height: 50,
-                              decoration: BoxDecoration(
-                                  color: Colors.amber,
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Center(
-                                child: Text("Log Out",
-                                    style: GoogleFonts.lato(
-                                        color: Colors.white,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.bold)),
-                              ))
+                          GestureDetector(
+                            onTap: () {
+                              _autservice.signOut();
+                              model.backLogin();
+                            },
+                            child: Container(
+                                width: double.infinity,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    color: Colors.amber,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: Center(
+                                  child: Text("Log Out",
+                                      style: GoogleFonts.lato(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                )),
+                          )
                         ],
                       ),
                     )),

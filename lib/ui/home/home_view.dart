@@ -48,45 +48,49 @@ class _HomeViewState extends State<HomeView> {
                         bucket: bucket);
                   })
             ]),
-            bottomNavigationBar: Container(
-                width: double.infinity,
-                height: 90,
-                padding: EdgeInsets.only(top: 10, right: 30, left: 30),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20),
-                    ),
-                    color: Color(0xFF0066DA)), //en alttaki tabbar rengi
-                child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      BottomNavigationItem(
-                          itemIndex: 0,
-                          notifier: bottomNavigatorTrigger,
-                          icon: Icons.widgets),
-                      Spacer(),
-                      BottomNavigationItem(
-                          itemIndex: 1,
-                          notifier: bottomNavigatorTrigger,
-                          icon: Icons.mood),
-                      Spacer(),
-                      DashboardAddButton(
-                        iconTapped: (() {
-                          homeViewModel.programNextView();
-                        }),
-                      ),
-                      Spacer(),
-                      BottomNavigationItem(
-                          itemIndex: 2,
-                          notifier: bottomNavigatorTrigger,
-                          icon: FeatherIcons.bell),
-                      Spacer(),
-                      BottomNavigationItem(
-                          itemIndex: 3,
-                          notifier: bottomNavigatorTrigger,
-                          icon: Icons.account_circle)
-                    ]))));
+            bottomNavigationBar: buildBottomNav()));
+  }
+
+  Container buildBottomNav() {
+    return Container(
+        width: double.infinity,
+        height: 90,
+        padding: EdgeInsets.only(top: 10, right: 30, left: 30),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            color: Color(0xFF0066DA)), //en alttaki tabbar rengi
+        child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              BottomNavigationItem(
+                  itemIndex: 0,
+                  notifier: bottomNavigatorTrigger,
+                  icon: Icons.widgets),
+              Spacer(),
+              BottomNavigationItem(
+                  itemIndex: 1,
+                  notifier: bottomNavigatorTrigger,
+                  icon: Icons.mood),
+              Spacer(),
+              DashboardAddButton(
+                iconTapped: (() {
+                  homeViewModel.programNextView();
+                }),
+              ),
+              Spacer(),
+              BottomNavigationItem(
+                  itemIndex: 2,
+                  notifier: bottomNavigatorTrigger,
+                  icon: FeatherIcons.messageSquare),
+              Spacer(),
+              BottomNavigationItem(
+                  itemIndex: 3,
+                  notifier: bottomNavigatorTrigger,
+                  icon: Icons.account_circle)
+            ]));
   }
 }

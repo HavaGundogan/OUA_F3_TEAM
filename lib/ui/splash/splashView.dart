@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:yourself_in_time_project/common/values/on_model_boarding.dart';
+import 'package:yourself_in_time_project/ui/login/login_view.dart';
 import 'package:yourself_in_time_project/ui/splash/Splash_view_model.dart';
 import 'package:yourself_in_time_project/ui/splash/on_boarding_page_widget.dart';
 import 'package:yourself_in_time_project/ui/splash/on_boardingg.dart';
@@ -31,14 +33,19 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         model: OnBoardingModel(
             "assets/images/tool.png",
             "Build Awesome Apps",
-            "Build Awesome Apps gelen giedn bir arada hep böyle asdasdasdasda",
+            "Don’t struggle to remember, take notes. Let TIME CATCH remind you",
             "1/2",
             Colors.white,
             size.height),
       ),
       OnBoardinghPageWidget(
-        model: OnBoardingModel("assets/images/page.png", "Learn",
-            "Build Awesome Apps ", "2/2", Colors.white, size.height),
+        model: OnBoardingModel(
+            "assets/images/page.png",
+            "Learn",
+            "Learn to catch your time because time is our most valuable treasure !",
+            "2/2",
+            Colors.white,
+            size.height),
       ),
     ];
 
@@ -60,7 +67,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                   int nextPage = controller.currentPage + 1;
                   controller.animateToPage(page: nextPage);
                   if (controller.currentPage == 1) {
-                    splashViewModel.nextLogin();
+                    Get.to(() => LoginView());
                   }
                 },
                 style: ElevatedButton.styleFrom(

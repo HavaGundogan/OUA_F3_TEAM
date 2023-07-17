@@ -58,7 +58,6 @@ class _NextOverViewState extends State<NextOverView> {
                           fontWeight: FontWeight.w600,
                           fontSize: 20)),
                   AppSpaces.horizontalSpace20,
-                  Icon(Icons.chevron_right, color: Colors.white, size: 30)
                 ])
               ],
             )),
