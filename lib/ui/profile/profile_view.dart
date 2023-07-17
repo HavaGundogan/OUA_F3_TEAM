@@ -20,8 +20,35 @@ import 'package:yourself_in_time_project/ui/profile/profile_view_model.dart';
 import '../../common/widgets/profile/text_outlined_button_with_text.dart';
 import '../../common/widgets/shapes/rounded_border_with_icon.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
+
+  @override
+  State<ProfileView> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  AuthService _authService = AuthService();
+  String name = '';
+
+  @override
+  initState() {
+    super.initState();
+    getName();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+  }
+
+  Future<String> getName() async {
+    String nameData = await _authService.getUserName();
+    setState(() {
+      name = nameData;
+    });
+    return name;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +86,7 @@ class ProfileView extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: Text(
-                                "${FirebaseAuth.instance.currentUser!.displayName}",
+                            child: Text("${name}",
                                 style: GoogleFonts.lato(
                                     color: Colors.blue,
                                     fontSize: 40,

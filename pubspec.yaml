@@ -12,8 +12,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
- 
+  
   cupertino_icons: ^1.0.2
+  
   get: ^4.6.5
   intl:
   liquid_swipe: ^3.0.1
@@ -69,11 +70,12 @@ dev_dependencies:
     sdk: flutter
   build_runner: 
   stacked_generator: 
+  flutter_launcher_icons: ^0.13.1
   
 flutter_icons:
-  android: "launcher_icon"
+  android: true
   ios: true
-  image_path: "assets/icon/icon.png"  
+  image_path: "assets/images/timeecatch.png"  
 
 flutter:
 

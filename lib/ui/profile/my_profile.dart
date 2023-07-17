@@ -10,6 +10,7 @@ import 'package:yourself_in_time_project/common/widgets/darkBackground/dark_radi
 import 'package:yourself_in_time_project/common/widgets/dummy/profile_dummy.dart';
 import 'package:yourself_in_time_project/common/widgets/navigation/default_back.dart';
 import 'package:yourself_in_time_project/common/widgets/profile/text_outlined_button_with_text.dart';
+import 'package:yourself_in_time_project/core/services/auth_service.dart';
 import 'package:yourself_in_time_project/ui/home/home_view_model.dart';
 import 'package:yourself_in_time_project/ui/profile/edit_profile.dart';
 
@@ -21,6 +22,27 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final ValueNotifier<bool> totalTaskNotifier = ValueNotifier(true);
   final String tabSpace = "\t\t";
+  AuthService _authService = AuthService();
+  String name = '';
+
+  @override
+  initState() {
+    super.initState();
+    getName();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+  }
+
+  Future<String> getName() async {
+    String nameData = await _authService.getUserName();
+    setState(() {
+      name = nameData;
+    });
+    return name;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +70,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     image: "assets/images/man-head.png"),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                      "${FirebaseAuth.instance.currentUser!.displayName}",
+                  child: Text("${name.toString()}",
                       style: GoogleFonts.lato(
                           color: Colors.black,
                           fontSize: 40,

@@ -287,6 +287,19 @@ class AuthService {
     }
   }
 
+  Future<String> getUserName() async {
+    String userId = FirebaseAuth.instance.currentUser!.uid;
+
+    DocumentReference userRef =
+        FirebaseFirestore.instance.collection('users').doc(userId);
+
+    DocumentSnapshot snapshot = await userRef.get();
+
+    // Kullanıcının adını döndürün
+
+    return snapshot.get('name');
+  }
+
   Future<String?> getTaskStateFromFirestore(int index) async {
     try {
       QuerySnapshot querySnapshot = await _firestore.collection('tasks').get();

@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.oyunveuygulamaakademisi.yourself_in_time_project">
    <application
-        android:label="yourself_in_time_project"
+        android:label="Time Catch"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

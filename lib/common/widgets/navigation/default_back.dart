@@ -18,8 +18,14 @@ class DefaultNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      RoundedBorderWithIcon(
+        onpressed: () {
+          Get.to(() => HomeView());
+        },
+        icon: Icons.arrow_back,
+      ),
       Text(this.title,
-          style: GoogleFonts.lato(fontSize: 20, color: Colors.white)),
+          style: GoogleFonts.lato(fontSize: 20, color: Colors.black)),
       Builder(builder: (context) {
         if (type == ProfileDummyType.Icon) {
           return ProfileDummy(

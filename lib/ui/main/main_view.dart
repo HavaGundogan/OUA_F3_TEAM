@@ -53,7 +53,7 @@ class _MainViewState extends State<MainView> {
 
   ValueNotifier<int> bottomNavigatorTrigger = ValueNotifier(0);
   final PageStorageBucket bucket = PageStorageBucket();
-  StatelessWidget currentScreen = Dashboard();
+  Dashboard currentScreen = Dashboard();
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<MainViewModel>.reactive(

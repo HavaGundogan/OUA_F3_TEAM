@@ -16,13 +16,46 @@ import 'package:yourself_in_time_project/ui/messages/messages_view.dart';
 import 'package:yourself_in_time_project/ui/profile/profile_view.dart';
 
 // ignore: must_be_immutable
-class Dashboard extends StatelessWidget {
+class Dashboard extends StatefulWidget {
   Dashboard({Key? key}) : super(key: key);
+
+  @override
+  State<Dashboard> createState() => _DashboardState();
+}
+
+class _DashboardState extends State<Dashboard> {
   ValueNotifier<bool> _totalTaskTrigger = ValueNotifier(true);
+
   ValueNotifier<bool> _totalDueTrigger = ValueNotifier(false);
+
   ValueNotifier<bool> _totalCompletedTrigger = ValueNotifier(true);
+
   ValueNotifier<bool> _workingOnTrigger = ValueNotifier(false);
+
   ValueNotifier<int> _buttonTrigger = ValueNotifier(0);
+
+  AuthService _authService = AuthService();
+
+  String name = '';
+
+  @override
+  initState() {
+    super.initState();
+    getName();
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+  }
+
+  Future<String> getName() async {
+    String nameData = await _authService.getUserName();
+    setState(() {
+      name = nameData;
+    });
+    return name;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,8 +76,7 @@ class Dashboard extends StatelessWidget {
                 },
               ),
               AppSpaces.verticalSpace20,
-              Text(
-                  "Hello,\n ${FirebaseAuth.instance.currentUser!.displayName} 👋",
+              Text("Hello,\n ${name} 👋",
                   style: GoogleFonts.lato(
                       color: Colors.black.withOpacity(0.7),
                       fontSize: 40,
