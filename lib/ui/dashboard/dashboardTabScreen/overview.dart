@@ -91,7 +91,7 @@ class _DashboardOverviewState extends State<DashboardOverview> {
       return buildTasks();
     } else {
       List<Widget> cards = List.generate(
-        myTasks!.length,
+        1,
         (index) => TaskProgressCard(
           cardTitle: title!,
           startDate: startDate!,
